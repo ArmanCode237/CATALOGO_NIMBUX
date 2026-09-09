@@ -124,6 +124,13 @@ html, body {
     padding: 0.6rem !important;
     font-size: 0.9rem;
   }
+
+  .showcase-section motion.div, 
+  .showcase-section img,
+  .product-image-wrapper {
+    will-change: transform, opacity;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 /* --- OPTIMIZACIONES PARA ESCRITORIO (PC) --- */
