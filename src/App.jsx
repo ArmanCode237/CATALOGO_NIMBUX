@@ -128,10 +128,21 @@ export default function App() {
               viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="title has-text-black is-1 has-text-weight-light" style={{ letterSpacing: '8px', fontSize: '4rem' }}>
+              <h1 
+                className="title has-text-black has-text-weight-light" 
+                style={{ 
+                  letterSpacing: 'clamp(4px, 2vw, 8px)', // Dinámico
+                  fontSize: 'clamp(2.5rem, 8vw, 4rem)'   // Dinámico
+                }}
+              >
                 COLECCIÓN 2026
               </h1>
-              <h2 className='is-size-4 has-text-black mt-0 pt-0' style={{ letterSpacing: '8px' }}>
+              <h2 
+                className='is-size-4 has-text-black mt-0 pt-0' 
+                style={{ 
+                  letterSpacing: 'clamp(3px, 1.5vw, 8px)' // Dinámico 
+                }}
+              >
                 REGALOS CORPORATIVOS
               </h2>
               <motion.div 

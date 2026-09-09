@@ -45,3 +45,38 @@ html, body {
   overflow: hidden; 
   background-color: transparent !important;
 }
+
+/* --- OPTIMIZACIONES PARA MÓVILES --- */
+
+/* Control de columnas: En móvil siempre apila, en PC alterna */
+@media (max-width: 768px) {
+  .showcase-columns {
+    display: flex;
+    flex-direction: column !important;
+  }
+  
+  .showcase-text {
+    padding: 3rem 1.5rem !important;
+    text-align: center; /* Centrar texto en celular se ve más elegante */
+  }
+
+  .showcase-section {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 4rem 0 !important; /* Espacio para respirar al hacer scroll */
+  }
+}
+
+@media (min-width: 769px) {
+  .showcase-columns.is-reversed {
+    flex-direction: row-reverse;
+  }
+  
+  .showcase-text {
+    padding: 0 4rem; /* El padding original de escritorio */
+  }
+
+  .showcase-section {
+    min-height: 100vh;
+  }
+}

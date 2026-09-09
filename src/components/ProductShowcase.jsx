@@ -43,7 +43,7 @@ export default function ProductShowcase({ product, index }) {
     // Configuramos un temporizador para avanzar la imagen
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    }, 4000); // 4000 ms = 4 segundos
+    }, 8000); // 4000 ms = 4 segundos
 
     // Limpiamos el temporizador si el componente se desmonta
     return () => clearInterval(timer);
