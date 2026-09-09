@@ -2,6 +2,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import ProductShowcase from './components/ProductShowcase';
+import SnowEffect from './components/SnowEffect';
 import './App.css';
 
 // Reemplaza tu arreglo presentationProducts con este:
@@ -76,18 +77,21 @@ export default function App() {
   });
 
   return (
-    <div 
+<div 
       ref={scrollContainerRef}
       className="premium-dynamic-bg"
       style={{ 
-        height: '100dvh', /* CAMBIO CRÍTICO: 100dvh en lugar de 100vh */
+        height: '100dvh',
         overflowY: 'scroll', 
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth',
-        /* Agrega esta línea para soporte estricto en iOS */
-        WebkitOverflowScrolling: 'touch' 
+        WebkitOverflowScrolling: 'touch',
+        position: 'relative' // Asegura el anclaje de los elementos absolutos
       }}
     >
+      {/* 2. Colocamos el efecto de nieve sutilmente flotando de fondo */}
+      <SnowEffect />
+
       {/* Barra de progreso global */}
       <motion.div
         style={{

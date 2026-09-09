@@ -1,21 +1,19 @@
-/* src/index.css */
-
-/* --- FONDO CORPORATIVO --- */
+/* --- FONDO CORPORATIVO NAVIDEÑO --- */
 .premium-dynamic-bg {
-  /* 1. Gradiente base: Blanco puro, gris platino suave y un toque ínfimo de champagne */
+  /* Gradiente invernal elegante: Tonos marfil, blanco nieve y plata cálida */
   background: linear-gradient(
     -45deg, 
-    #ffffff, 
-    #f2f4f7, 
-    #ffffff, 
-    #faf9f6
+    #fcfcfc, 
+    #eef2f5, 
+    #f5f7f8, 
+    #e8edef
   );
   background-size: 400% 400%;
   animation: corporateShine 25s ease-in-out infinite alternate;
   position: relative;
 }
 
-/* 2. Textura premium: Cuadrícula corporativa arquitectónica */
+/* Textura premium navideña: Cuadrícula con destellos sutiles simulando ambiente invernal */
 .premium-dynamic-bg::after {
   content: "";
   position: absolute;
@@ -23,12 +21,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Líneas finas casi invisibles (2% de opacidad) */
+  /* Líneas finas con un toque plateado sutil (3% de opacidad) */
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
-  background-size: 80px 80px; /* Tamaño de los cuadros */
-  pointer-events: none; /* Asegura que no interfiera con los clics */
+    linear-gradient(to right, rgba(100, 120, 140, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 120, 140, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
 }
 
 @keyframes corporateShine {
