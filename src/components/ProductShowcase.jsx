@@ -123,7 +123,7 @@ export default function ProductShowcase({ product, index }) {
             </motion.p>
 
             <motion.p variants={textItemVariants} className="has-text-info title is-4 mb-6">
-              ${product.price.toFixed(2)}
+              Unidades límitadas
             </motion.p>
             
             <motion.div variants={textItemVariants}>
