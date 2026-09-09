@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import ProductShowcase from './components/ProductShowcase';
-import './app.css';
+import './App.css';
 
 const presentationProducts = [
   {
