@@ -1,0 +1,35 @@
+/* src/index.css */
+
+.premium-dynamic-bg {
+  /* Gradiente suave con un tamaño extendido para poder animarlo */
+  background: linear-gradient(
+    -45deg, 
+    #ffffff, 
+    #f5f5f7, 
+    #ffffff, 
+    #ebebeb
+  );
+  background-size: 400% 400%;
+  
+  /* El fondo se queda fijo como un lienzo mientras el contenido hace scroll */
+  background-attachment: fixed; 
+  
+  /* Animación infinita y fluida */
+  animation: smoothShine 15s ease-in-out infinite alternate;
+}
+
+@keyframes smoothShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Regla extra para asegurarnos de que el scroll del html/body no interfiera con nuestro contenedor magnético */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+}
