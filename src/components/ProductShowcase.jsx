@@ -53,7 +53,7 @@ export default function ProductShowcase({ product, index }) {
               variants={imageContainerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }} /* Animación inicia antes para ser más fluida */
+              viewport={{ once: false, margin: "-50px" }} /* Animación inicia antes para ser más fluida */
               style={{ 
                 borderRadius: '8px', 
                 overflow: 'hidden', 
@@ -108,7 +108,7 @@ export default function ProductShowcase({ product, index }) {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }} /* Sincronizado con la imagen */
+            viewport={{ once: false, margin: "-50px" }} /* Sincronizado con la imagen */
           >
             <motion.p variants={textItemVariants} className="is-size-7 has-text-black is-uppercase mb-4" style={{ letterSpacing: '2px' }}>
               Modelo 0{index + 1} - Edición límitada
