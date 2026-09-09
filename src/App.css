@@ -96,7 +96,7 @@ html, body {
 
   .product-image-wrapper {
     width: 100% !important;
-    aspect-ratio: 16 / 10 !format;
+    aspect-ratio: 16 / 10;
     max-height: 28vh; /* Controla la altura para que no opaque el texto */
     margin: 0 auto;
   }
