@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {
@@ -10,88 +10,55 @@ const containerVariants = {
 };
 
 const textItemVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1, y: 0,
     transition: { type: 'spring', stiffness: 80, damping: 20 }
   }
 };
 
+// Se eliminó el "clipPath" que causaba el efecto visual de "corte"
 const imageContainerVariants = {
-  hidden: { opacity: 0, scale: 1.05, clipPath: 'inset(10% 10% 10% 10%)' },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: {
-    opacity: 1, scale: 1, clipPath: 'inset(0% 0% 0% 0%)',
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+    opacity: 1, scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" }
   }
 };
 
 export default function ProductShowcase({ product, index }) {
   const isEven = index % 2 === 0;
   
-  // Lógica para controlar la imagen actual del slider
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  // Verificación de seguridad
   const images = product.imageUrls || (product.imageUrl ? [product.imageUrl] : []);
   const hasMultipleImages = images.length > 1;
 
-  // --- LÓGICA DE AUTOPLAY (4 segundos) ---
-  useEffect(() => {
-    // Si solo hay una imagen, no hacemos nada
-    if (!hasMultipleImages) return;
+  const nextImage = () => setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  const prevImage = () => setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
 
-    // Configuramos un temporizador para avanzar la imagen
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    }, 8000); // 4000 ms = 4 segundos
-
-    // Limpiamos el temporizador si el componente se desmonta
-    return () => clearInterval(timer);
-  }, [hasMultipleImages, images.length]);
-  // ---------------------------------------
-
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-  };
-
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-  };
-
-  // --- LÓGICA DE WHATSAPP ---
-  // Reemplaza con tu número real (ej. 52 para México + los 10 dígitos)
+  // Recuerda poner tu número real
   const numeroWhatsApp = "529381289812"; 
   const mensajeFormateado = encodeURIComponent(`Hola, quiero cotizar el modelo: ${product.title}`);
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeFormateado}`;
-  // --------------------------
 
   return (
-    <section 
-      className="section" 
-      style={{ 
-        overflow: 'hidden', 
-        height: '100vh',
-        display: 'flex', 
-        alignItems: 'center',
-        scrollSnapAlign: 'start'
-      }}
-    >
+    <section className="section showcase-section">
       <div className="container">
-        <div className={`columns is-vcentered ${isEven ? '' : 'is-flex-direction-row-reverse'}`}>
+        <div className={`columns is-vcentered showcase-columns ${isEven ? '' : 'is-reversed'}`}>
           
-          {/* COLUMNA DE LA IMAGEN (CON CARRUSEL INTEGRADO) */}
           <div className="column is-7">
             <motion.div 
               variants={imageContainerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.4 }} 
+              viewport={{ once: false, amount: 0.2 }} /* Animación inicia antes para ser más fluida */
               style={{ 
                 borderRadius: '8px', 
                 overflow: 'hidden', 
                 backgroundColor: '#f5f5f5',
                 position: 'relative',
-                aspectRatio: '16/9' // Mantiene la proporción en todas las fotos
+                aspectRatio: '16/9' 
               }}
             >
               <AnimatePresence mode="wait">
@@ -99,33 +66,20 @@ export default function ProductShowcase({ product, index }) {
                   key={currentIndex} 
                   src={images[currentIndex]} 
                   alt={`${product.title} - Vista ${currentIndex + 1}`} 
-                  
-                  // OPTIMIZACIONES DE RENDIMIENTO:
-                  loading={index === 0 && currentIndex === 0 ? "eager" : "lazy"} 
-                  decoding="async"
-                  
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
                 />
               </AnimatePresence>
 
-              {/* Controles del Carrusel (Solo visibles si hay > 1 imagen) */}
               {hasMultipleImages && (
                 <>
-                  {/* Flechas Laterales */}
                   <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, display: 'flex', justifyContent: 'space-between', padding: '0 1rem', transform: 'translateY(-50%)', zIndex: 10 }}>
-                    <button onClick={prevImage} className="button is-white is-rounded is-small" style={{ opacity: 0.7, border: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                      ←
-                    </button>
-                    <button onClick={nextImage} className="button is-white is-rounded is-small" style={{ opacity: 0.7, border: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                      →
-                    </button>
+                    <button onClick={prevImage} className="button is-white is-rounded is-small" style={{ opacity: 0.7, border: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>←</button>
+                    <button onClick={nextImage} className="button is-white is-rounded is-small" style={{ opacity: 0.7, border: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>→</button>
                   </div>
-
-                  {/* Puntos (Dots) Inferiores */}
                   <div style={{ position: 'absolute', bottom: '15px', left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: '8px', zIndex: 10 }}>
                     {images.map((_, dotIndex) => (
                       <div 
@@ -148,14 +102,12 @@ export default function ProductShowcase({ product, index }) {
             </motion.div>
           </div>
 
-          {/* COLUMNA DE TEXTOS */}
           <motion.div 
-            className="column is-5"
+            className="column is-5 showcase-text"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
-            style={{ padding: '0 4rem' }}
+            viewport={{ once: false, amount: 0.2 }} /* Sincronizado con la imagen */
           >
             <motion.p variants={textItemVariants} className="is-size-7 has-text-black is-uppercase mb-4" style={{ letterSpacing: '2px' }}>
               Modelo 0{index + 1} - Edición límitada
@@ -173,7 +125,6 @@ export default function ProductShowcase({ product, index }) {
               ${product.price.toFixed(2)}
             </motion.p>
             
-            {/* Convertido de button a tag 'a' para funcionar como enlace externo */}
             <motion.div variants={textItemVariants}>
               <a 
                 href={urlWhatsApp} 

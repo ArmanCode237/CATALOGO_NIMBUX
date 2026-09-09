@@ -47,23 +47,27 @@ html, body {
   background-color: transparent !important;
 }
 
-
-/* --- ESTILOS BASE DEL CONTENEDOR (NUEVO) --- */
+/* --- ESTILOS BASE DEL CONTENEDOR --- */
 .showcase-section {
   display: flex;
-  align-items: center; /* En PC se centra verticalmente */
+  align-items: center; 
   scroll-snap-align: start;
-  min-height: 100vh;
+  min-height: 100dvh; /* Altura dinámica en lugar de vh */
   width: 100%;
 }
 
-
-/* --- OPTIMIZACIONES PARA MÓVILES (Celulares) --- */
+/* --- OPTIMIZACIONES PARA MÓVILES (Celulares y iPhones) --- */
 @media (max-width: 768px) {
+  /* Truco específico para Safari en iOS */
+  body, html {
+    min-height: -webkit-fill-available;
+  }
+
   .showcase-section {
-    align-items: flex-start !important; /* Evita que la foto se corte arriba */
-    height: auto !important;
-    padding: 5rem 1rem 2rem 1rem !important; /* Más espacio arriba, menos abajo */
+    min-height: -webkit-fill-available; /* Soporte iOS */
+    height: 100dvh !important;
+    align-items: center !important; 
+    padding: 2rem 1rem !important; /* Reducimos el espacio excesivo de arriba */
   }
 
   .showcase-columns {
@@ -71,31 +75,39 @@ html, body {
     flex-direction: column !important;
     width: 100%;
     margin: 0 !important;
+    /* Centramos todo el bloque verticalmente */
+    justify-content: center; 
+    height: 100%;
   }
   
+  /* Hacemos que la imagen no crezca desproporcionadamente en celulares altos */
+  .showcase-columns .column.is-7 {
+    max-height: 35vh; 
+    margin-bottom: 1rem;
+  }
+
   .showcase-text {
-    padding: 1.5rem 1rem !important; /* Menos relleno para ahorrar espacio */
+    padding: 0 1rem !important; 
     text-align: center;
   }
 
-  /* Reducir el tamaño de los títulos y espacios para que el botón sea visible */
   .showcase-text .title.is-2 {
-    font-size: 1.75rem !important;
+    font-size: 1.2rem !important; /* Tipografía un poco más compacta */
     margin-bottom: 0.5rem !important;
   }
   
   .showcase-text .subtitle.is-5 {
-    font-size: 1rem !important;
+    font-size: 0.90rem !important;
     margin-bottom: 1rem !important;
-    line-height: 1.4 !important;
+    line-height: 1.3 !important;
   }
 
-  .showcase-text .button, .showcase-text a {
+  .showcase-text a {
     margin-top: 0.5rem !important;
-    width: 100%; /* Botón de ancho completo en celular para que sea más fácil de tocar */
+    width: 100%; 
+    padding: 0.8rem !important; /* Hacemos el botón un poco más delgado */
   }
 }
-
 
 /* --- OPTIMIZACIONES PARA ESCRITORIO (PC) --- */
 @media (min-width: 769px) {
@@ -104,6 +116,6 @@ html, body {
   }
   
   .showcase-text {
-    padding: 0 4rem; /* El padding original de escritorio */
+    padding: 0 4rem; 
   }
 }

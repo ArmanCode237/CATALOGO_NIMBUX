@@ -80,11 +80,12 @@ export default function App() {
       ref={scrollContainerRef}
       className="premium-dynamic-bg"
       style={{ 
-        height: '100vh', 
+        height: '100dvh', /* CAMBIO CRÍTICO: 100dvh en lugar de 100vh */
         overflowY: 'scroll', 
-        // Estas dos propiedades activan el "enfoque" al hacer scroll
         scrollSnapType: 'y mandatory',
-        scrollBehavior: 'smooth'
+        scrollBehavior: 'smooth',
+        /* Agrega esta línea para soporte estricto en iOS */
+        WebkitOverflowScrolling: 'touch' 
       }}
     >
       {/* Barra de progreso global */}
@@ -103,7 +104,15 @@ export default function App() {
       />
 
       {/* PORTADA - Alineación de scroll al inicio */}
-      <section className="hero is-fullheight" style={{ scrollSnapAlign: 'start' }}>
+      <section 
+        className="hero" 
+        style={{ 
+          scrollSnapAlign: 'start', 
+          minHeight: '100dvh',
+          display: 'flex',
+          flexDirection: 'column' /* Restaura el comportamiento de pantalla completa */
+        }}
+      >
         <div className="hero-head">
           <nav className="navbar is-transparent" style={{ padding: '2rem 0' }}>
             <div className="container is-flex is-justify-content-center">
@@ -120,7 +129,8 @@ export default function App() {
           </nav>
         </div>
 
-        <div className="hero-body">
+        {/* Agregamos Flexbox al hero-body para centrar el contenido verticalmente */}
+        <div className="hero-body" style={{ flexGrow: 1, display: 'flex', alignItems: 'center', width: '100%' }}>
           <div className="container has-text-centered">
             <motion.div
               initial={{ opacity: 0, filter: 'blur(10px)', y: 40 }}
@@ -131,8 +141,8 @@ export default function App() {
               <h1 
                 className="title has-text-black has-text-weight-light" 
                 style={{ 
-                  letterSpacing: 'clamp(4px, 2vw, 8px)', // Dinámico
-                  fontSize: 'clamp(2.5rem, 8vw, 4rem)'   // Dinámico
+                  letterSpacing: 'clamp(4px, 2vw, 8px)',
+                  fontSize: 'clamp(2.5rem, 8vw, 4rem)' 
                 }}
               >
                 COLECCIÓN 2026
@@ -140,7 +150,7 @@ export default function App() {
               <h2 
                 className='is-size-4 has-text-black mt-0 pt-0' 
                 style={{ 
-                  letterSpacing: 'clamp(3px, 1.5vw, 8px)' // Dinámico 
+                  letterSpacing: 'clamp(3px, 1.5vw, 8px)' 
                 }}
               >
                 REGALOS CORPORATIVOS
