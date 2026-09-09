@@ -96,9 +96,14 @@ export default function ProductShowcase({ product, index }) {
             >
               <AnimatePresence mode="wait">
                 <motion.img 
-                  key={currentIndex} // La key obliga a Framer Motion a animar el cambio
+                  key={currentIndex} 
                   src={images[currentIndex]} 
                   alt={`${product.title} - Vista ${currentIndex + 1}`} 
+                  
+                  // OPTIMIZACIONES DE RENDIMIENTO:
+                  loading={index === 0 && currentIndex === 0 ? "eager" : "lazy"} 
+                  decoding="async"
+                  
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
