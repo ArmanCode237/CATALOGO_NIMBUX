@@ -53,14 +53,8 @@ export default function ProductShowcase({ product, index }) {
               variants={imageContainerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: "-50px" }} /* Animación inicia antes para ser más fluida */
-              style={{ 
-                borderRadius: '8px', 
-                overflow: 'hidden', 
-                backgroundColor: '#f5f5f5',
-                position: 'relative',
-                aspectRatio: '16/9' 
-              }}
+              viewport={{ once: false, margin: "-50px" }}
+              className="product-image-wrapper" /* <-- Usamos la clase CSS en lugar de estilos en línea */
             >
               <AnimatePresence mode="wait">
                 <motion.img 
