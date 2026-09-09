@@ -56,15 +56,18 @@ export default function ProductShowcase({ product, index }) {
               viewport={{ once: false, margin: "-50px" }}
               className="product-image-wrapper" /* <-- Usamos la clase CSS en lugar de estilos en línea */
             >
-              <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait">
                 <motion.img 
                   key={currentIndex} 
                   src={images[currentIndex]} 
                   alt={`${product.title} - Vista ${currentIndex + 1}`} 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  initial={{ opacity: 0, scale: 0.98 }} /* Ligero zoom in inicial muy sutil */
+                  animate={{ opacity: 1, scale: 1 }}     /* Llega a su escala natural con suavidad */
+                  exit={{ opacity: 0 }}                  /* Mantiene la salida limpia */
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: [0.2, 1, 1.4, 1] /* Curva de aceleración tipo "ease-out" natural */
+                  }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
                 />
               </AnimatePresence>
