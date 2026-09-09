@@ -125,7 +125,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                src="/images/LOGO.png" 
+                src="/images/LOGO_1.png" 
                 alt="Logotipo de la marca" 
                 style={{ maxHeight: '80px', objectFit: 'contain' }} 
               />
