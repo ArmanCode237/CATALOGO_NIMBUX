@@ -1,0 +1,8 @@
+.product-image-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  position: relative; /* Cambiado de !important a relativo estándar */
+  width: 100%;
+  aspect-ratio: 16/9;
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import './ProductShowcase.css'
 
 const containerVariants = {
   hidden: { opacity: 0 },

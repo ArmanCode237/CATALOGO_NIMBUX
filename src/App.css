@@ -58,16 +58,15 @@ html, body {
 
 /* --- OPTIMIZACIONES PARA MÓVILES (Celulares y iPhones) --- */
 @media (max-width: 768px) {
-  /* Truco específico para Safari en iOS */
   body, html {
     min-height: -webkit-fill-available;
   }
 
   .showcase-section {
-    min-height: -webkit-fill-available; /* Soporte iOS */
+    min-height: -webkit-fill-available;
     height: 100dvh !important;
     align-items: center !important; 
-    padding: 2rem 1rem !important; /* Reducimos el espacio excesivo de arriba */
+    padding: 1.5rem 1rem !important;
   }
 
   .showcase-columns {
@@ -75,37 +74,54 @@ html, body {
     flex-direction: column !important;
     width: 100%;
     margin: 0 !important;
-    /* Centramos todo el bloque verticalmente */
-    justify-content: center; 
+    justify-content: center;
+    align-items: center;
     height: 100%;
   }
   
-  /* Hacemos que la imagen no crezca desproporcionadamente en celulares altos */
-  .showcase-columns .column.is-7 {
-    max-height: 35vh; 
+  /* Contenedor de la imagen optimizado para móvil */
+  .showcase-columns > .column.is-7 {
+    order: 1;
+    width: 100% !important;
+    padding: 0 !important;
     margin-bottom: 1rem;
   }
 
+  /* Contenedor de texto debajo de la imagen */
+  .showcase-columns > .column.is-5 {
+    order: 2;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .product-image-wrapper {
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !format;
+    max-height: 28vh; /* Controla la altura para que no opaque el texto */
+    margin: 0 auto;
+  }
+
   .showcase-text {
-    padding: 0 1rem !important; 
+    padding: 0 0.5rem !important; 
     text-align: center;
   }
 
   .showcase-text .title.is-2 {
-    font-size: 1.2rem !important; /* Tipografía un poco más compacta */
-    margin-bottom: 0.5rem !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 0.3rem !important;
   }
   
   .showcase-text .subtitle.is-5 {
-    font-size: 0.90rem !important;
-    margin-bottom: 1rem !important;
-    line-height: 1.3 !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.6rem !important;
+    line-height: 1.25 !important;
   }
 
   .showcase-text a {
-    margin-top: 0.5rem !important;
+    margin-top: 0.2rem !important;
     width: 100%; 
-    padding: 0.8rem !important; /* Hacemos el botón un poco más delgado */
+    padding: 0.6rem !important;
+    font-size: 0.9rem;
   }
 }
 
