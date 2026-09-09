@@ -186,7 +186,7 @@ export default function App() {
       {/* FOOTER - Alineación de scroll al final */}
       <footer className="section is-medium has-text-centered" style={{ scrollSnapAlign: 'end', minHeight: '30vh' }}>
         <p className="has-text-grey-light is-size-7 is-uppercase" style={{ letterSpacing: '2px' }}>
-          Diseño Editorial React
+          NIMBUX 2026
         </p>
       </footer>
     </div>
