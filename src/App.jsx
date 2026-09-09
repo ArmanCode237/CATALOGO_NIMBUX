@@ -13,13 +13,13 @@ const presentationProducts = [
     description: 'Nuestra opción más completa para causar una impresión duradera. Materiales premium y acabados meticulosos que proyectan prestigio, ideal para directivos, socios comerciales y obsequios de alto valor.',
     price: 15.00,
     imageUrls: [
-      '/images/products/1.JPG',
-      '/images/products/1-1.JPG',
-      '/images/products/1-2.JPG',
-      '/images/products/1-3.JPG',
-      '/images/products/1-4.JPG',
-      '/images/products/1-5.JPG',
-      '/images/products/1-6.JPG',
+      '/images/products/1.webp',
+      '/images/products/1-1.webp',
+      '/images/products/1-2.webp',
+      '/images/products/1-3.webp',
+      '/images/products/1-4.webp',
+      '/images/products/1-5.webp',
+      '/images/products/1-6.webp',
     ]
   },
   {
@@ -28,9 +28,9 @@ const presentationProducts = [
     description: 'Un conjunto ejecutivo indispensable para el día a día corporativo. Diseñado para ofrecer funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe a sus clientes o colaboradores con estilo.',
     price: 8.50,
     imageUrls: [
-      '/images/products/2.JPG',
-      '/images/products/2-1.JPG',
-      '/images/products/2-2.JPG',
+      '/images/products/2.webp',
+      '/images/products/2-1.webp',
+      '/images/products/2-2.webp',
     ]
   },
   {
@@ -39,12 +39,12 @@ const presentationProducts = [
     description: 'La combinación clásica e infalible para el entorno profesional. Un detalle corporativo versátil, elegante y minimalista, diseñado para facilitar la planificación y destacar la identidad de su empresa en cada reunión.',
     price: 22.90,
     imageUrls: [
-      '/images/products/3.JPG',
-      '/images/products/3-1.JPG',
-      '/images/products/3-2.JPG',
-      '/images/products/3-3.JPG',
-      '/images/products/3-4.JPG',
-      '/images/products/3-5.JPG',
+      '/images/products/3.webp',
+      '/images/products/3-1.webp',
+      '/images/products/3-2.webp',
+      '/images/products/3-3.webp',
+      '/images/products/3-4.webp',
+      '/images/products/3-5.webp',
     ]
   },
   {
@@ -53,12 +53,12 @@ const presentationProducts = [
     description: 'Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad y portadas con textura premium, listas para realzar el logotipo de su empresa con un acabado impecable.',
     price: 34.00,
     imageUrls: [
-      '/images/products/4.JPG',
-      '/images/products/4-1.JPG',
-      '/images/products/4-2.JPG',
-      '/images/products/4-3.JPG',
-      '/images/products/4-4.JPG',
-      '/images/products/4-5.JPG',
+      '/images/products/4.webp',
+      '/images/products/4-1.webp',
+      '/images/products/4-2.webp',
+      '/images/products/4-3.webp',
+      '/images/products/4-4.webp',
+      '/images/products/4-5.webp',
     ]
   }
 ];
