@@ -22,7 +22,7 @@ export default function ProductCard({ title, price, imageUrl }) {
         <div className="media mb-4">
           <div className="media-content">
             <p className="title is-5">{title}</p>
-            <p className="subtitle is-4 has-text-weight-bold has-text-primary mb-0">${price}</p>
+            <p className="subtitle is-4 has-text-weight-bold has-text-blakc mb-0">${price}</p>
           </div>
         </div>
         

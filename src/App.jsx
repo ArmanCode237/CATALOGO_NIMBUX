@@ -4,34 +4,62 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import ProductShowcase from './components/ProductShowcase';
 import './App.css';
 
+// Reemplaza tu arreglo presentationProducts con este:
+
 const presentationProducts = [
   {
     id: 1,
-    title: 'Kit 1: Agenda, pluma y termo',
-    description: 'Diseños únicos y resistentes para organizar el material. Acabado impecable resistente al agua y roces.',
+    title: 'Kit 1: Agenda, pluma, tarjetero y termo',
+    description: 'Nuestra opción más completa para causar una impresión duradera. Materiales premium y acabados meticulosos que proyectan prestigio, ideal para directivos, socios comerciales y obsequios de alto valor.',
     price: 15.00,
-    imageUrl: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&q=80&w=1000'
+    imageUrls: [
+      '/images/products/1.JPG',
+      '/images/products/1-1.JPG',
+      '/images/products/1-2.JPG',
+      '/images/products/1-3.JPG',
+      '/images/products/1-4.JPG',
+      '/images/products/1-5.JPG',
+      '/images/products/1-6.JPG',
+    ]
   },
   {
     id: 2,
-    title: 'Kit 2: Agenda, tarjetero, pluma y termo',
-    description: 'Ilustraciones vibrantes y troquelado de alta precisión. Perfecto para decorar portátiles y libretas.',
+    title: 'Kit 2: Agenda, pluma y termo',
+    description: 'Un conjunto ejecutivo indispensable para el día a día corporativo. Diseñado para ofrecer funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe a sus clientes o colaboradores con estilo.',
     price: 8.50,
-    imageUrl: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&q=80&w=1000'
+    imageUrls: [
+      '/images/products/2.JPG',
+      '/images/products/2-1.JPG',
+      '/images/products/2-2.JPG',
+    ]
   },
   {
     id: 3,
-    title: 'Ki 3: Agenda y termo',
-    description: 'Encuadernación de autor con hojas de alto gramaje, portadas exclusivas y texturizadas que destacan al tacto.',
+    title: 'Kit 3: Agenda y pluma',
+    description: 'La combinación clásica e infalible para el entorno profesional. Un detalle corporativo versátil, elegante y minimalista, diseñado para facilitar la planificación y destacar la identidad de su empresa en cada reunión.',
     price: 22.90,
-    imageUrl: 'https://images.unsplash.com/photo-1531346878377-a541e4a0ecce?auto=format&fit=crop&q=80&w=1000'
+    imageUrls: [
+      '/images/products/3.JPG',
+      '/images/products/3-1.JPG',
+      '/images/products/3-2.JPG',
+      '/images/products/3-3.JPG',
+      '/images/products/3-4.JPG',
+      '/images/products/3-5.JPG',
+    ]
   },
   {
     id: 4,
-    title: 'Agendas',
-    description: 'Combinación exacta de estética y funcionalidad. Organizadores, notas adhesivas y bolígrafos minimalistas.',
+    title: 'Agendas Corporativas',
+    description: 'Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad y portadas con textura premium, listas para realzar el logotipo de su empresa con un acabado impecable.',
     price: 34.00,
-    imageUrl: 'https://images.unsplash.com/photo-1503694978374-8a2fa686963a?auto=format&fit=crop&q=80&w=1000'
+    imageUrls: [
+      '/images/products/4.JPG',
+      '/images/products/4-1.JPG',
+      '/images/products/4-2.JPG',
+      '/images/products/4-3.JPG',
+      '/images/products/4-4.JPG',
+      '/images/products/4-5.JPG',
+    ]
   }
 ];
 
