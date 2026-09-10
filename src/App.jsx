@@ -1,72 +1,26 @@
 // src/App.jsx
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import ProductShowcase from './components/ProductShowcase';
 import SnowEffect from './components/SnowEffect';
+import presentationProducts from './data/products.json';
 import './App.css';
-
-// Reemplaza tu arreglo presentationProducts con este:
-
-const presentationProducts = [
-  {
-    id: 1,
-    title: 'Kit 1: Agenda, pluma, tarjetero y termo',
-    description: 'Nuestra opción más completa para causar una impresión duradera. Materiales premium y acabados meticulosos que proyectan prestigio, ideal para directivos, socios comerciales y obsequios de alto valor.',
-    price: 15.00,
-    imageUrls: [
-      '/images/products/1.webp',
-      '/images/products/1-1.webp',
-      '/images/products/1-2.webp',
-      '/images/products/1-3.webp',
-      '/images/products/1-4.webp',
-      '/images/products/1-5.webp',
-      '/images/products/1-6.webp',
-    ]
-  },
-  {
-    id: 2,
-    title: 'Kit 2: Agenda, pluma y termo',
-    description: 'Un conjunto ejecutivo indispensable para el día a día corporativo. Diseñado para ofrecer funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe a sus clientes o colaboradores con estilo.',
-    price: 8.50,
-    imageUrls: [
-      '/images/products/2.webp',
-      '/images/products/2-1.webp',
-      '/images/products/2-2.webp',
-    ]
-  },
-  {
-    id: 3,
-    title: 'Kit 3: Agenda y pluma',
-    description: 'La combinación clásica e infalible para el entorno profesional. Un detalle corporativo versátil, elegante y minimalista, diseñado para facilitar la planificación y destacar la identidad de su empresa en cada reunión.',
-    price: 22.90,
-    imageUrls: [
-      '/images/products/3.webp',
-      '/images/products/3-1.webp',
-      '/images/products/3-2.webp',
-      '/images/products/3-3.webp',
-      '/images/products/3-4.webp',
-      '/images/products/3-5.webp',
-    ]
-  },
-  {
-    id: 4,
-    title: 'Agendas Corporativas',
-    description: 'Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad y portadas con textura premium, listas para realzar el logotipo de su empresa con un acabado impecable.',
-    price: 34.00,
-    imageUrls: [
-      '/images/products/4.webp',
-      '/images/products/4-1.webp',
-      '/images/products/4-2.webp',
-      '/images/products/4-3.webp',
-      '/images/products/4-4.webp',
-      '/images/products/4-5.webp',
-    ]
-  }
-];
 
 export default function App() {
   // Referencia al contenedor que tendrá el scroll magnético
   const scrollContainerRef = useRef(null);
+
+  // --- SISTEMA DE PRECARGA GLOBAL (PRELOAD) ---
+  useEffect(() => {
+    presentationProducts.forEach((product) => {
+      const imagesToPreload = product.imageUrls || (product.imageUrl ? [product.imageUrl] : []);
+      imagesToPreload.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+    });
+  }, []);
+  // --------------------------------------------
   
   // Conectamos el progreso del scroll a nuestro contenedor específico
   const { scrollYProgress } = useScroll({ container: scrollContainerRef });

@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "title": "MODELO NEXUS",
+    "description": "Nuestra opción más completa para causar una impresión duradera. Materiales premium y acabados meticulosos que proyectan prestigio, ideal para directivos, socios comerciales y obsequios de alto valor.",
+    "price": 15.00,
+    "imageUrls": [
+      "/images/products/1.webp",
+      "/images/products/1-1.webp",
+      "/images/products/1-2.webp",
+      "/images/products/1-3.webp",
+      "/images/products/1-4.webp",
+      "/images/products/1-5.webp",
+      "/images/products/1-6.webp"
+    ],
+    "details": {
+      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "includes": [
+        "Tarjetero de Curpiel",
+        "Bolígrafo con barril de acero inoxidable y tinta negra",
+        "Libreta de hojas rayadas",
+        "Termo de acero inoxidable de 500ml"
+      ],
+      "colors": [
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+      ],
+      "typographies": [
+        "Serif (Clásica y formal)", 
+        "Sans-Serif (Moderna y limpia)", 
+        "Script (Elegante y cursiva)"
+      ],
+      "material": "Curpiel, Acero inoxidable"
+    },
+    "card": {
+      "type": "tarjeta",
+      "availabilityColors": [
+        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/card/1.webp" },
+        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/card/1.webp" },
+        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/card/1.webp" },
+        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/card/1.webp" }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "title": "MODELO VERTEX",
+    "description": "Un conjunto ejecutivo indispensable para el día a día corporativo. Diseñado para ofrecer funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe a sus clientes o colaboradores con estilo.",
+    "price": 8.50,
+    "imageUrls": [
+      "/images/products/2.webp",
+      "/images/products/2-1.webp",
+      "/images/products/2-2.webp"
+    ],
+    "details": {
+      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "includes": [
+        "Agenda de 180 hojas",
+        "Termo de 20 oz"
+      ],
+      "colors": [
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+      ],
+      "typographies": [
+        "Serif (Clásica y formal)", 
+        "Sans-Serif (Moderna y limpia)", 
+        "Script (Elegante y cursiva)"
+      ],
+      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+    },
+    "card": {
+      "type": "tarjeta",
+      "availabilityColors": [
+        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/card/1.webp" },
+        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/card/1.webp" },
+        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/card/1.webp" },
+        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/card/1.webp" }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "title": "MODELO ESSENTIAL",
+    "description": "La combinación clásica e infalible para el entorno profesional. Un detalle corporativo versátil, elegante y minimalista, diseñado para facilitar la planificación y destacar la identidad de su empresa en cada reunión.",
+    "price": 22.90,
+    "imageUrls": [
+      "/images/products/3.webp",
+      "/images/products/3-1.webp",
+      "/images/products/3-2.webp",
+      "/images/products/3-3.webp",
+      "/images/products/3-4.webp",
+      "/images/products/3-5.webp"
+    ],
+    "details": {
+      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "includes": [
+        "Agenda de 180 hojas",
+        "Termo de 20 oz"
+      ],
+      "colors": [
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+      ],
+      "typographies": [
+        "Serif (Clásica y formal)", 
+        "Sans-Serif (Moderna y limpia)", 
+        "Script (Elegante y cursiva)"
+      ],
+      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+    },
+    "card": {
+      "type": "tag",
+      "availabilityColors": [
+        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/tag/1.webp" },
+        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/tag/1.webp" },
+        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/tag/1.webp" },
+        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/tag/1.webp" }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "title": "MODELO ONE",
+    "description": "Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad y portadas con textura premium, listas para realzar el logotipo de su empresa con un acabado impecable.",
+    "price": 34.00,
+    "imageUrls": [
+      "/images/products/4.webp",
+      "/images/products/4-1.webp",
+      "/images/products/4-2.webp",
+      "/images/products/4-3.webp",
+      "/images/products/4-4.webp",
+      "/images/products/4-5.webp"
+    ],
+    "details": {
+      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "includes": [
+        "Agenda de 180 hojas",
+        "Termo de 20 oz"
+      ],
+      "colors": [ 
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+      ],
+      "typographies": [
+        "Serif (Clásica y formal)", 
+        "Sans-Serif (Moderna y limpia)", 
+        "Script (Elegante y cursiva)"
+      ],
+      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+    },
+    "card": {
+      "type": "etiqueta",
+      "availabilityColors": [
+        { "color": "Azul Marino", "hex": "#2655EB", "previewImage": "/images/etiqueta/1.webp" },
+        { "color": "Azul Indigo", "hex": "#040D29", "previewImage": "/images/etiqueta/1.webp" },
+        { "color": "Rojo", "hex": "#FF2E08", "previewImage": "/images/etiqueta/1.webp" },
+        { "color": "Verde Claro", "hex": "#39E358", "previewImage": "/images/etiqueta/1.webp" }
+      ]
+    }
+  }
+]

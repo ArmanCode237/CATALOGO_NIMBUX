@@ -7,6 +7,20 @@
     <title>Regalos corporativos</title>
   </head>
   <body>
+    <!-- Formulario oculto para que Netlify Forms registre los campos para tu CSV -->
+  <form name="cotizaciones" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="orderId" />
+      <input type="text" name="producto" />
+      <input type="text" name="colorProducto" />
+      <input type="text" name="tipoGrabado" />
+      <input type="text" name="tipografia" />
+      <input type="text" name="colorTarjeta" />
+      <input type="text" name="empresa" />
+      <input type="email" name="correo" />
+      <input type="text" name="whatsapp" />
+      <input type="number" name="cantidad" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
