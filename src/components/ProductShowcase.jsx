@@ -308,7 +308,11 @@ export default function ProductShowcase({ product, index }) {
                           className={`button is-small ${item.text || 'has-text-dark'}`} 
                           style={{ backgroundColor: item.hex || '#f5f5f5', border: formData.colorProducto === item.color ? '2px solid #000' : '1px solid #dbdbdb', borderRadius: '6px' }}
                         >
-                          {item.color} {formData.colorProducto === item.color && ' ✓'}
+                          {item.color} 
+                          {/* SOLUCIÓN: Envolver el check en un span que no se destruye, solo se oculta */}
+                          <span style={{ display: formData.colorProducto === item.color ? 'inline' : 'none' }}>
+                            {' '}✓
+                          </span>
                         </button>
                       ))}
                     </div>
