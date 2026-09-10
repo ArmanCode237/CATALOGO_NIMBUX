@@ -325,8 +325,8 @@ export default function ProductShowcase({ product, index }) {
                         <div className="select is-fullwidth">
                           <select className='has-text-black' name="tipoGrabado" value={formData.tipoGrabado} onChange={handleInputChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
                             <option value="Solo Logo">Solo Logo</option>
-                            <option value="Solo Nombre">Solo Nombre de la Empresa</option>
-                            <option value="Logo + Nombre">Logo + Nombre de la Empresa</option>
+                            <option value="Solo Nombre">Nombre de la persona</option>
+                            <option value="Logo + Nombre">Logo + Nombre</option>
                           </select>
                         </div>
                       </div>
