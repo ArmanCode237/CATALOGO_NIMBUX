@@ -358,9 +358,10 @@ export default function ProductShowcase({ product, index }) {
                     PASO 2 DE 3 - DETALLE DE EMPAQUE
                   </p>
                   
-                  <div className="box mt-2 mb-5" style={{ backgroundColor: '#f4f6f8', border: '1px solid #e2e8f0', boxShadow: 'none', padding: '1.5rem' }}>
-                    <p className="help mb-4" style={{ color: '#64748b', fontSize: '0.85rem' }}>
-                      El diseño base de la {product.card?.type || 'tarjeta'} ya se encuentran predefinidos por color respectivamente, solo se reemplaza el logotipo dentro del diseño existente.
+                <div className="box mt-2 mb-5" style={{ backgroundColor: '#f4f6f8', border: '1px solid #e2e8f0', boxShadow: 'none', padding: '1.5rem' }}>
+                    <p className="help mb-4 has-text-weight-medium" style={{ color: '#334155', fontSize: '0.88rem', lineHeight: '1.5' }}>
+                      {/* Aquí leemos la descripción dinámica de tu JSON (Tarjeta, Tag o Etiqueta) */}
+                      {product.card?.description}
                     </p>
                     
                     {/* Previsualización grande de la tarjeta */}

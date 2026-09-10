@@ -2,24 +2,15 @@
   {
     "id": 1,
     "title": "MODELO NEXUS",
-    "description": "Nuestra opción más completa para causar una impresión duradera. Materiales premium y acabados meticulosos que proyectan prestigio, ideal para directivos, socios comerciales y obsequios de alto valor.",
-    "price": 15.00,
-    "imageUrls": [
-      "/images/products/1.webp",
-      "/images/products/1-1.webp",
-      "/images/products/1-2.webp",
-      "/images/products/1-3.webp",
-      "/images/products/1-4.webp",
-      "/images/products/1-5.webp",
-      "/images/products/1-6.webp"
-    ],
+    "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.",
+    "imageUrls": ["/images/products/1.webp", "/images/products/1-1.webp"],
     "details": {
-      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "description": "Incluye un tarjetero fabricado en curpiel con diseño funcional (soporte para celular), un bolígrafo con barril de acero inoxidable y tinta negra, una libreta de hojas rayadas y un termo de doble pared en acero inoxidable de 550 ml.",
       "includes": [
-        "Tarjetero de Curpiel",
-        "Bolígrafo con barril de acero inoxidable y tinta negra",
+        "Tarjetero de curpiel / Soporte para celular",
+        "Bolígrafo de acero inoxidable (tinta negra)",
         "Libreta de hojas rayadas",
-        "Termo de acero inoxidable de 500ml"
+        "Termo de acero inoxidable 550ml"
       ],
       "colors": [
         { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
@@ -27,143 +18,240 @@
         { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
         { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
       ],
-      "typographies": [
-        "Serif (Clásica y formal)", 
-        "Sans-Serif (Moderna y limpia)", 
-        "Script (Elegante y cursiva)"
-      ],
-      "material": "Curpiel, Acero inoxidable"
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Curpiel, Acero Inoxidable, Papel"
     },
     "card": {
-      "type": "tarjeta",
+      "type": "Tarjeta",
+      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
       "availabilityColors": [
-        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/card/1.webp" },
-        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/card/1.webp" },
-        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/card/1.webp" },
-        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/card/1.webp" }
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "previewImage": "/images/card/azul-marino.webp" },
+        { "color": "Azul Indigo", "hex": "#4b0082", "previewImage": "/images/card/indigo.webp" }
       ]
     }
   },
   {
     "id": 2,
     "title": "MODELO VERTEX",
-    "description": "Un conjunto ejecutivo indispensable para el día a día corporativo. Diseñado para ofrecer funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe a sus clientes o colaboradores con estilo.",
-    "price": 8.50,
-    "imageUrls": [
-      "/images/products/2.webp",
-      "/images/products/2-1.webp",
-      "/images/products/2-2.webp"
-    ],
+    "description": "Set ejecutivo que ofrece funcionalidad sin sacrificar la elegancia, ideal para el día a día corporativo.",
+    "imageUrls": ["/images/products/2.webp", "/images/products/2-1.webp"],
     "details": {
-      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "description": "Set ejecutivo que incluye libreta de tapa suave en curpiel, bolígrafo tipo roller con barril metálico con tapa (tinta negra) y termo de acero inoxidable de doble pared de 560 ml (19 oz).",
       "includes": [
-        "Agenda de 180 hojas",
-        "Termo de 20 oz"
+        "Libreta de tapa suave en curpiel",
+        "Bolígrafo roller metálico con tapa",
+        "Termo de acero inoxidable (560 ml / 19 oz)"
       ],
       "colors": [
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
-        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
-        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+        { "color": "Gris Claro", "hex": "#d3d3d3", "text": "has-text-dark" },
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
-      "typographies": [
-        "Serif (Clásica y formal)", 
-        "Sans-Serif (Moderna y limpia)", 
-        "Script (Elegante y cursiva)"
-      ],
-      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Curpiel, Metal, Acero Inoxidable"
     },
     "card": {
-      "type": "tarjeta",
+      "type": "Tarjeta",
+      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
       "availabilityColors": [
-        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/card/1.webp" },
-        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/card/1.webp" },
-        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/card/1.webp" },
-        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/card/1.webp" }
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "previewImage": "/images/card/azul-marino.webp" },
+        { "color": "Azul Indigo", "hex": "#4b0082", "previewImage": "/images/card/indigo.webp" }
       ]
     }
   },
   {
     "id": 3,
-    "title": "MODELO ESSENTIAL",
-    "description": "La combinación clásica e infalible para el entorno profesional. Un detalle corporativo versátil, elegante y minimalista, diseñado para facilitar la planificación y destacar la identidad de su empresa en cada reunión.",
-    "price": 22.90,
-    "imageUrls": [
-      "/images/products/3.webp",
-      "/images/products/3-1.webp",
-      "/images/products/3-2.webp",
-      "/images/products/3-3.webp",
-      "/images/products/3-4.webp",
-      "/images/products/3-5.webp"
-    ],
+    "title": "MODELO VOLT",
+    "description": "Set ejecutivo premium que integra elegancia y tecnología funcional en un solo kit.",
+    "imageUrls": ["/images/products/3.webp", "/images/products/3-1.webp"],
     "details": {
-      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "description": "Incluye una libreta de 100 hojas de 80g, bolígrafo tipo ball pen en acero inoxidable y una Power Bank (10,000 mAh) fabricada en PC y ABS con múltiples puertos.",
       "includes": [
-        "Agenda de 180 hojas",
-        "Termo de 20 oz"
+        "Libreta de 100 hojas (80g)",
+        "Bolígrafo ball pen de acero inoxidable (tinta negra)",
+        "Power Bank 10,000 mAh (Entradas USB/Tipo C, Salidas Tipo C/USB/Lightning)"
       ],
       "colors": [
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
-        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
-        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+        { "color": "Blanco", "hex": "#ffffff", "text": "has-text-dark" },
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
-      "typographies": [
-        "Serif (Clásica y formal)", 
-        "Sans-Serif (Moderna y limpia)", 
-        "Script (Elegante y cursiva)"
-      ],
-      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Acero Inoxidable, PC, ABS, Papel"
     },
     "card": {
-      "type": "tag",
+      "type": "Tarjeta",
+      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
       "availabilityColors": [
-        { "color": "Azul Marino", "hex": "#1a1a1a", "previewImage": "/images/tag/1.webp" },
-        { "color": "Azul Indigo", "hex": "#7f8c8d", "previewImage": "/images/tag/1.webp" },
-        { "color": "Rojo", "hex": "#a67c52", "previewImage": "/images/tag/1.webp" },
-        { "color": "Verde Claro", "hex": "#1b2a4a", "previewImage": "/images/tag/1.webp" }
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "previewImage": "/images/card/azul-marino.webp" },
+        { "color": "Azul Indigo", "hex": "#4b0082", "previewImage": "/images/card/indigo.webp" }
       ]
     }
   },
   {
     "id": 4,
     "title": "MODELO ONE",
-    "description": "Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad y portadas con textura premium, listas para realzar el logotipo de su empresa con un acabado impecable.",
-    "price": 34.00,
-    "imageUrls": [
-      "/images/products/4.webp",
-      "/images/products/4-1.webp",
-      "/images/products/4-2.webp",
-      "/images/products/4-3.webp",
-      "/images/products/4-4.webp",
-      "/images/products/4-5.webp"
-    ],
+    "description": "Set empaquetado en caja de regalo con diseño ejecutivo y espacios exactos para guardar bolígrafo y libreta.",
+    "imageUrls": ["/images/products/4.webp", "/images/products/4-1.webp"],
     "details": {
-      "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.  Incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular, ofreciendo versatilidad en el escritorio o durante reuniones. Integra un bolígrafo con barril de acero inoxidable y tinta negra, brindando una escritura fluida y una apariencia elegante.  El set se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo. Una opción completa y sofisticada, perfecta como regalo corporativo o kit de bienvenida.",
+      "description": "Set ejecutivo minimalista que resalta por su presentación. Incluye libreta tamaño A5 de 100 hojas (80g) y un elegante bolígrafo.",
       "includes": [
-        "Agenda de 180 hojas",
-        "Termo de 20 oz"
+        "Libreta tamaño A5 (100 hojas, 80g)",
+        "Bolígrafo ejecutivo",
+        "Caja de regalo boutique"
       ],
-      "colors": [ 
+      "colors": [
         { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
         { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
-        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+        { "color": "Azul", "hex": "#2980b9", "text": "has-text-white" }
       ],
-      "typographies": [
-        "Serif (Clásica y formal)", 
-        "Sans-Serif (Moderna y limpia)", 
-        "Script (Elegante y cursiva)"
-      ],
-      "material": "Aleación metálica, ecopiel texturizada y acero térmico"
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Papel, Metal"
     },
     "card": {
-      "type": "etiqueta",
+      "type": "Tag",
+      "description": "Etiqueta pequeña (5.5x7 cm) adherida con un sujetador plástico por fuera del kit. Se personaliza únicamente con tu logotipo.",
       "availabilityColors": [
-        { "color": "Azul Marino", "hex": "#2655EB", "previewImage": "/images/etiqueta/1.webp" },
-        { "color": "Azul Indigo", "hex": "#040D29", "previewImage": "/images/etiqueta/1.webp" },
-        { "color": "Rojo", "hex": "#FF2E08", "previewImage": "/images/etiqueta/1.webp" },
-        { "color": "Verde Claro", "hex": "#39E358", "previewImage": "/images/etiqueta/1.webp" }
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/tag/rojo.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/tag/verde.webp" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "previewImage": "/images/tag/azul-marino.webp" },
+        { "color": "Azul Indigo", "hex": "#4b0082", "previewImage": "/images/tag/indigo.webp" }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "title": "MODELO ATOM",
+    "description": "Herramientas de organización con estética profesional, listas para realzar el logotipo de tu empresa.",
+    "imageUrls": ["/images/products/5.webp", "/images/products/5-1.webp"],
+    "details": {
+      "description": "Incluye un bolígrafo tipo ball pen en acero, un soporte para teléfono en curpiel con imán adherible (funciona como tarjetero), y un llavero de acero inoxidable con detalles en curpiel.",
+      "includes": [
+        "Bolígrafo ball pen (barril de acero, tinta negra)",
+        "Soporte celular magnético / Tarjetero de curpiel",
+        "Llavero de acero inoxidable y curpiel",
+        "Caja de regalo"
+      ],
+      "colors": [
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Beige Obscuro", "hex": "#d4b895", "text": "has-text-dark" }
+      ],
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Acero inoxidable, Curpiel"
+    },
+    "card": {
+      "type": "Tarjeta",
+      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
+      "availabilityColors": [
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "previewImage": "/images/card/azul-marino.webp" },
+        { "color": "Azul Indigo", "hex": "#4b0082", "previewImage": "/images/card/indigo.webp" }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "title": "MODELO CHRONOS",
+    "description": "Agenda diaria 2027 diseñada para maximizar la productividad con organización por horario detallado.",
+    "imageUrls": ["/images/products/6.webp", "/images/products/6-1.webp"],
+    "details": {
+      "description": "Cubierta en curpiel con resorte. 175 hojas de 65g organizadas por horario (5am - 10pm). Cuenta con separador, calendarios 2026-2028, planeador mensual, objetivos, sección de contactos y bolsillo interno.",
+      "includes": [
+        "Agenda Diaria 2027 (350 páginas, hojas de 65g)",
+        "Bolígrafo con tinta negra",
+        "Caja de cartón individual"
+      ],
+      "colors": [
+        { "color": "Rojo", "hex": "#c0392b", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
+        { "color": "Beige", "hex": "#f5f5dc", "text": "has-text-dark" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
+      ],
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Curpiel (PU), Papel 65g, Cartón"
+    },
+    "card": {
+      "type": "Etiqueta",
+      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "availabilityColors": [
+        { "color": "Blanco", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/etiqueta/verde.webp" },
+        { "color": "Azul Claro", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul-claro.webp" },
+        { "color": "Azul Oscuro", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/azul-oscuro.webp" },
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/etiqueta/rojo.webp" }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "title": "MODELO NOVA",
+    "description": "Agenda diaria 2027 en tonos vibrantes y cubierta de curpiel. Organización total con formato de horario.",
+    "imageUrls": ["/images/products/7.webp", "/images/products/7-1.webp"],
+    "details": {
+      "description": "Cubierta en curpiel con resorte. 175 hojas de 65g. Cuenta con separador, calendarios, planeador mensual, objetivos anuales, sección de contactos y bolsillo interno.",
+      "includes": [
+        "Agenda Diaria 2027 (hojas de 65g)",
+        "Bolígrafo con tinta negra",
+        "Caja de cartón individual"
+      ],
+      "colors": [
+        { "color": "Rosa Claro", "hex": "#ffb6c1", "text": "has-text-dark" },
+        { "color": "Verde Esmeralda", "hex": "#2ecc71", "text": "has-text-white" },
+        { "color": "Azul Claro", "hex": "#87ceeb", "text": "has-text-dark" }
+      ],
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Curpiel (PU), Papel 65g, Cartón"
+    },
+    "card": {
+      "type": "Etiqueta",
+      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "availabilityColors": [
+        { "color": "Blanco", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/etiqueta/verde.webp" },
+        { "color": "Azul Claro", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul-claro.webp" },
+        { "color": "Azul Oscuro", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/azul-oscuro.webp" },
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/etiqueta/rojo.webp" }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "title": "MODELO STRAT",
+    "description": "Agenda semanal 2027 para una planeación visual eficiente a la semana, con accesorios incluidos.",
+    "imageUrls": ["/images/products/8.webp", "/images/products/8-1.webp"],
+    "details": {
+      "description": "Cubierta en curpiel con resorte. Interior con 80 hojas de 65g organizadas por horario semanal (5am - 10pm). Incluye calendarios, planeador mensual, objetivos y bolsillo interno.",
+      "includes": [
+        "Agenda Semanal 2027 (80 hojas de 65g)",
+        "Bolígrafo con tinta negra",
+        "Caja de cartón individual"
+      ],
+      "colors": [
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
+        { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Rojo", "hex": "#c0392b", "text": "has-text-white" }
+      ],
+      "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
+      "material": "Curpiel (PU), Papel 65g, Cartón"
+    },
+    "card": {
+      "type": "Etiqueta",
+      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "availabilityColors": [
+        { "color": "Blanco", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco.webp" },
+        { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/etiqueta/verde.webp" },
+        { "color": "Azul Claro", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul-claro.webp" },
+        { "color": "Azul Oscuro", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/azul-oscuro.webp" },
+        { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/etiqueta/rojo.webp" }
       ]
     }
   }
