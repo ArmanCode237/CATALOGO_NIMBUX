@@ -190,9 +190,19 @@ export default function ProductShowcase({ product, index }) {
               {product.title}
             </motion.h2>
             
-            <motion.p variants={textItemVariants} className="subtitle is-5 has-text-black has-text-weight-light mb-6" style={{ lineHeight: '1.8' }}>
+            <motion.p variants={textItemVariants} className="subtitle is-5 has-text-black has-text-weight-light mb-2" style={{ lineHeight: '1.8' }}>
               {product.description}
             </motion.p>
+
+            <motion.div variants={textItemVariants} className="subtitle mb-6">
+              {product.details.colors.map((item, index) => (
+                <div
+                  key={index}
+                  className="dot"
+                  style={{ backgroundColor: item.hex }}
+                />
+              ))}
+            </motion.div>
 
             <motion.p variants={textItemVariants} className="has-text-info title is-4 mb-5">
               Unidades limitadas
@@ -436,14 +446,14 @@ export default function ProductShowcase({ product, index }) {
                     <div className="field mb-4">
                       <label className="label is-small has-text-grey-dark">Nombre de la Empresa *</label>
                       <div className="control">
-                        <input className="input" type="text" name="empresa" required value={formData.empresa} onChange={handleInputChange} placeholder="Ej. Corporativo Roca" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                        <input className="input has-text-black" type="text" name="empresa" required value={formData.empresa} onChange={handleInputChange} placeholder="Ej. Corporativo Roca" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                       </div>
                     </div>
                     
                     <div className="field mb-4">
                       <label className="label is-small has-text-grey-dark">Correo Electrónico *</label>
                       <div className="control">
-                        <input className="input" type="email" name="correo" required value={formData.correo} onChange={handleInputChange} placeholder="contacto@empresa.com" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                        <input className="input has-text-black" type="email" name="correo" required value={formData.correo} onChange={handleInputChange} placeholder="contacto@empresa.com" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                       </div>
                     </div>
 
@@ -451,19 +461,19 @@ export default function ProductShowcase({ product, index }) {
                       <div className="column is-6 field">
                         <label className="label is-small has-text-grey-dark">WhatsApp *</label>
                         <div className="control">
-                          <input className="input" type="tel" name="whatsapp" required value={formData.whatsapp} onChange={handleInputChange} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                          <input className="input has-text-black" type="tel" name="whatsapp" required value={formData.whatsapp} onChange={handleInputChange} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                         </div>
                       </div>
                       <div className="column is-6 field">
                         <label className="label is-small has-text-grey-dark">Cantidad (Unidades) *</label>
                         <div className="control">
-                          <input className="input" type="number" min="1" name="cantidad" required value={formData.cantidad} onChange={handleInputChange} style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                          <input className="input has-text-black" type="number" min="1" name="cantidad" required value={formData.cantidad} onChange={handleInputChange} style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                         </div>
                       </div>
                     </div>
 
                     <div className="mt-6 is-flex" style={{ gap: '15px' }}>
-                      <button type="button" onClick={() => setStep(2)} className="button is-white is-outlined" style={{ borderRadius: '0', width: '30%', padding: '1.2rem', border: '1px solid #ccc' }}>
+                      <button type="button" onClick={() => setStep(2)} className="button is-white is-outlined has-text-black" style={{ borderRadius: '0', width: '30%', padding: '1.2rem', border: '1px solid #ccc' }}>
                         Volver
                       </button>
                       <button type="submit" className={`button is-black ${isSubmitting ? 'is-loading' : ''}`} style={{ borderRadius: '0', width: '70%', padding: '1.2rem' }}>

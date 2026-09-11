@@ -3,23 +3,34 @@
     "id": 1,
     "title": "MODELO NEXUS",
     "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.",
-    "imageUrls": ["/images/products/1.webp", "/images/products/1-1.webp"],
+    "imageUrls": [
+      "/images/products/1.webp", 
+      "/images/products/1-1.webp",
+      "/images/products/1-2.webp", 
+      "/images/products/1-3.webp",
+      "/images/products/1-4.webp",
+      "/images/products/1-5.webp",
+      "/images/products/1-6.webp"
+  ],
     "details": {
-      "description": "Incluye un tarjetero fabricado en curpiel con diseño funcional (soporte para celular), un bolígrafo con barril de acero inoxidable y tinta negra, una libreta de hojas rayadas y un termo de doble pared en acero inoxidable de 550 ml.",
+      "description": "Este kit corporativo incluye un tarjetero fabricado en curpiel, con diseño funcional que además puede utilizarse como soporte para celular. Integra un bolígrafo con barril de acero inoxidable y tinta negra. El kit se complementa con una libreta de hojas rayadas, ideal para la toma de notas, y un termo de doble pared fabricado en acero inoxidable, con capacidad de 550 ml, diseñado para mantener la temperatura de las bebidas por más tiempo.",
       "includes": [
         "Tarjetero de curpiel / Soporte para celular",
-        "Bolígrafo de acero inoxidable (tinta negra)",
+        "Bolígrafo con barril de acero inoxidable (tinta negra)",
         "Libreta de hojas rayadas",
-        "Termo de acero inoxidable 550ml"
+        "Termo de acero inoxidable de doble pared (550 ml)"
       ],
       "colors": [
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
+        { "color": "Café Claro", "hex": "#a67c52", "text": "has-text-white" },
         { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Café claro", "hex": "#a67c52", "text": "has-text-white" },
-        { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" }
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Curpiel, Acero Inoxidable, Papel"
+      "material": "Curpiel, Cuero Pu, Acero Inoxidable",
+      "peso": "1.3 kg.",
+      "medidas": "Tarjetero: 9.3×6.4 cm. | Bolígrafo: 13.7×1.13 cm. | Termo: 25×7.3 cm. | Libreta: 21×15.7 cm. | Caja: 26.5×25.6×8.7 cm.",
+      "areaImpresion": "Tarjetero: 4.5×3.4 cm. | Bolígrafo: 5×1 cm. | Termo: 15×5 cm. | Libreta: 14×7.5 cm. | Caja: 16.5×15.6 cm."
     },
     "card": {
       "type": "Tarjeta",
@@ -35,21 +46,28 @@
   {
     "id": 2,
     "title": "MODELO VERTEX",
-    "description": "Set ejecutivo que ofrece funcionalidad sin sacrificar la elegancia, ideal para el día a día corporativo.",
-    "imageUrls": ["/images/products/2.webp", "/images/products/2-1.webp"],
+    "description": "Set ejecutivo que ofrece funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe con estilo.",
+    "imageUrls": [
+      "/images/products/2.webp", 
+      "/images/products/2-1.webp",
+      "/images/products/2-2.webp"
+    ],
     "details": {
-      "description": "Set ejecutivo que incluye libreta de tapa suave en curpiel, bolígrafo tipo roller con barril metálico con tapa (tinta negra) y termo de acero inoxidable de doble pared de 560 ml (19 oz).",
+      "description": "Kit corporativo que incluye libreta de tapa suave en curpiel, bolígrafo tipo roller con barril metálico con tapa, tinta de escritura negra y termo de acero inoxidable de doble pared de 560 ml.",
       "includes": [
         "Libreta de tapa suave en curpiel",
-        "Bolígrafo roller metálico con tapa",
-        "Termo de acero inoxidable (560 ml / 19 oz)"
+        "Bolígrafo tipo roller con barril metálico con tapa",
+        "Termo de acero inoxidable de doble pared (560 ml)"
       ],
       "colors": [
         { "color": "Gris Claro", "hex": "#d3d3d3", "text": "has-text-dark" },
         { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Curpiel, Metal, Acero Inoxidable"
+      "material": "Curpiel, Acero Inoxidable",
+      "peso": "1.555 kg.",
+      "medidas": "Caja: 33.8×10.4×25.6 cm. | Libreta: 14×21 cm. | Termo: 17.2×9.1 cm. | Bolígrafo: 13.7×1.62 cm.",
+      "areaImpresion": "Libreta: 7×12 cm. | Termo: 12×5 cm. | Bolígrafo: 7×1 cm."
     },
     "card": {
       "type": "Tarjeta",
@@ -65,13 +83,23 @@
   {
     "id": 3,
     "title": "MODELO VOLT",
-    "description": "Set ejecutivo premium que integra elegancia y tecnología funcional en un solo kit.",
-    "imageUrls": ["/images/products/3.webp", "/images/products/3-1.webp"],
+    "description": "Set ejecutivo premium, integra funcionalidad tecnológica y diseño en un solo kit.",
+    "imageUrls": [
+    "/images/products/3.webp", 
+    "/images/products/3-1.webp",
+    "/images/products/3-2.webp",
+    "/images/products/3-3.webp",
+    "/images/products/3-4.webp",
+    "/images/products/3-5.webp",
+    "/images/products/3-6.webp",
+    "/images/products/3-7.webp",
+    "/images/products/3-8.webp"
+  ],
     "details": {
-      "description": "Incluye una libreta de 100 hojas de 80g, bolígrafo tipo ball pen en acero inoxidable y una Power Bank (10,000 mAh) fabricada en PC y ABS con múltiples puertos.",
+      "description": "Kit corporativo, incluye una libreta de 100 hojas de 80 g, bolígrafo tipo ball pen fabricado en acero inoxidable con tinta de escritura en color negro y power bank fabricado en PC y ABS. Capacidad de la batería 10,000 mAh (5V=2A). Entradas de tipo USB y tipo C, salidas de tipo C, USB y lightning.",
       "includes": [
-        "Libreta de 100 hojas (80g)",
-        "Bolígrafo ball pen de acero inoxidable (tinta negra)",
+        "Libreta de 100 hojas (80 g)",
+        "Bolígrafo ball pen en acero inoxidable",
         "Power Bank 10,000 mAh (Entradas USB/Tipo C, Salidas Tipo C/USB/Lightning)"
       ],
       "colors": [
@@ -79,7 +107,10 @@
         { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Acero Inoxidable, PC, ABS, Papel"
+      "material": "Acero Inoxidable, Plástico, Curpiel",
+      "peso": "0.715 kg.",
+      "medidas": "Caja: 24.5×27.8 cm. | Libreta: 21.1×14.5 cm. | Bolígrafo: 13.7×1.1 cm. | Power Bank: 14.7×6.8×1.7 cm.",
+      "areaImpresion": "Caja: 10×10 cm. | Libreta: 8×6 cm. | Bolígrafo: 3x.9cm. | Power Bank: 4×4 cm."
     },
     "card": {
       "type": "Tarjeta",
@@ -95,22 +126,32 @@
   {
     "id": 4,
     "title": "MODELO ONE",
-    "description": "Set empaquetado en caja de regalo con diseño ejecutivo y espacios exactos para guardar bolígrafo y libreta.",
-    "imageUrls": ["/images/products/4.webp", "/images/products/4-1.webp"],
+    "description": "Set empaquetado en caja de regalo con diseño ejecutivo y espacio adecuado para guardar bolígrafo y libreta.",
+    "imageUrls": [
+      "/images/products/4.webp", 
+      "/images/products/4-1.webp",
+      "/images/products/4-2.webp",
+      "/images/products/4-3.webp",
+      "/images/products/4-4.webp",
+      "/images/products/4-5.webp"
+    ],
     "details": {
-      "description": "Set ejecutivo minimalista que resalta por su presentación. Incluye libreta tamaño A5 de 100 hojas (80g) y un elegante bolígrafo.",
+      "description": "Kit corporativo, incluye libreta tamaño A5, de 80 g y 100 hojas, bolígrafo con tinta de escritura en color negro.",
       "includes": [
-        "Libreta tamaño A5 (100 hojas, 80g)",
-        "Bolígrafo ejecutivo",
+        "Libreta tamaño A5 (80 g y 100 hojas)",
+        "Bolígrafo ejecutivo (tinta negra)",
         "Caja de regalo boutique"
       ],
       "colors": [
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Azul", "hex": "#2980b9", "text": "has-text-white" },
         { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Azul", "hex": "#2980b9", "text": "has-text-white" }
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Papel, Metal"
+      "material": "Curpiel",
+      "peso": "0.625 kg.",
+      "medidas": "Caja: 21.3×21.3 cm. | Pluma: 1×13.5 cm. | Libreta: 14.4×21 cm.",
+      "areaImpresion": "Caja: 12×12 cm. | Pluma: 1×4.5 cm. | Libreta: 5×10 cm."
     },
     "card": {
       "type": "Tag",
@@ -126,24 +167,39 @@
   {
     "id": 5,
     "title": "MODELO ATOM",
-    "description": "Herramientas de organización con estética profesional, listas para realzar el logotipo de tu empresa.",
-    "imageUrls": ["/images/products/5.webp", "/images/products/5-1.webp"],
+    "description": "Herramientas de organización con estética profesional. Interiores pensados para maximizar la productividad.",
+    "imageUrls": [
+      "/images/products/5.webp", 
+      "/images/products/5-1.webp",
+      "/images/products/5-2.webp",
+      "/images/products/5-3.webp",
+      "/images/products/5-4.webp",
+      "/images/products/5-5.webp",
+      "/images/products/5-6.webp",
+      "/images/products/5-7.webp",
+      "/images/products/5-8.webp",
+      "/images/products/5-9.webp",
+      "/images/products/5-10.webp",
+      "/images/products/5-11.webp"
+    ],
     "details": {
-      "description": "Incluye un bolígrafo tipo ball pen en acero, un soporte para teléfono en curpiel con imán adherible (funciona como tarjetero), y un llavero de acero inoxidable con detalles en curpiel.",
+      "description": "Kit corporativo, incluye un bolígrafo tipo ball pen con barril fabricado en acero, tinta de escritura negra. Un soporte para teléfono fabricado en curpiel, su hoja de acero inoxidable con imán ayuda a que este se adhiera al teléfono celular para funcionar también como un tarjetero. Un llavero fabricado en acero inoxidable con detalles en curpiel.",
       "includes": [
-        "Bolígrafo ball pen (barril de acero, tinta negra)",
-        "Soporte celular magnético / Tarjetero de curpiel",
-        "Llavero de acero inoxidable y curpiel",
-        "Caja de regalo"
+        "Bolígrafo ball pen con barril de acero",
+        "Soporte magnético para teléfono / Tarjetero de curpiel",
+        "Llavero de acero inoxidable con curpiel"
       ],
       "colors": [
         { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
+        { "color": "Beige Obscuro", "hex": "#d4b895", "text": "has-text-dark" },
         { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
-        { "color": "Beige Obscuro", "hex": "#d4b895", "text": "has-text-dark" }
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Acero inoxidable, Curpiel"
+      "material": "Curpiel, Acero Inoxidable",
+      "peso": "0.325 kg.",
+      "medidas": "Caja: 18×18.5 cm.",
+      "areaImpresion": "Caja: 15×15 cm."
     },
     "card": {
       "type": "Tarjeta",
@@ -160,23 +216,38 @@
     "id": 6,
     "title": "MODELO CHRONOS",
     "description": "Agenda diaria 2027 diseñada para maximizar la productividad con organización por horario detallado.",
-    "imageUrls": ["/images/products/6.webp", "/images/products/6-1.webp"],
+    "imageUrls": [
+      "/images/products/6.webp", 
+      "/images/products/6-1.webp",
+      "/images/products/6-2.webp",
+      "/images/products/6-3.webp",
+      "/images/products/6-4.webp",
+      "/images/products/6-5.webp",
+      "/images/products/6-6.webp",
+      "/images/products/6-7.webp",
+      "/images/products/6-8.webp",
+      "/images/products/6-9.webp",
+      "/images/products/6-10.webp"
+    ],
     "details": {
-      "description": "Cubierta en curpiel con resorte. 175 hojas de 65g organizadas por horario (5am - 10pm). Cuenta con separador, calendarios 2026-2028, planeador mensual, objetivos, sección de contactos y bolsillo interno.",
+      "description": "Kit de agenda diaria 2027, bolígrafo con tinta de escritura negra. Cubierta fabricada en curpiel con resorte sujetador e interior de 175 hojas de 65 g. (350 páginas). Cada día tiene espacio para tareas importantes y está organizada por horario (5:00 am - 22:00 pm). Cuenta con: Separador de hojas, calendario anual 2026-2028, planeador mensual, hoja de objetivos anuales, hoja de pendientes mensuales, espacio para notas, tareas, sección de contactos y bolsillo interno para almacenar documentos.",
       "includes": [
-        "Agenda Diaria 2027 (350 páginas, hojas de 65g)",
-        "Bolígrafo con tinta negra",
+        "Agenda Diaria 2027 (350 páginas, hojas de 65 g)",
+        "Bolígrafo con tinta de escritura negra",
         "Caja de cartón individual"
       ],
       "colors": [
-        { "color": "Rojo", "hex": "#c0392b", "text": "has-text-white" },
         { "color": "Azul Marino", "hex": "#1b2a4a", "text": "has-text-white" },
         { "color": "Beige", "hex": "#f5f5dc", "text": "has-text-dark" },
         { "color": "Gris", "hex": "#7f8c8d", "text": "has-text-white" },
-        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" }
+        { "color": "Negro", "hex": "#1a1a1a", "text": "has-text-white" },
+        { "color": "Rojo", "hex": "#c0392b", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Curpiel (PU), Papel 65g, Cartón"
+      "material": "Curpiel",
+      "peso": "0.6 kg.",
+      "medidas": "21.3×15 cm.",
+      "areaImpresion": "10×10 cm."
     },
     "card": {
       "type": "Etiqueta",
@@ -194,21 +265,34 @@
     "id": 7,
     "title": "MODELO NOVA",
     "description": "Agenda diaria 2027 en tonos vibrantes y cubierta de curpiel. Organización total con formato de horario.",
-    "imageUrls": ["/images/products/7.webp", "/images/products/7-1.webp"],
+    "imageUrls": [
+      "/images/products/7.webp", 
+      "/images/products/7-1.webp",
+      "/images/products/7-2.webp",
+      "/images/products/7-3.webp",
+      "/images/products/7-4.webp",
+      "/images/products/7-5.webp",
+      "/images/products/7-6.webp",
+      "/images/products/7-7.webp",
+      "/images/products/7-8.webp"
+    ],
     "details": {
-      "description": "Cubierta en curpiel con resorte. 175 hojas de 65g. Cuenta con separador, calendarios, planeador mensual, objetivos anuales, sección de contactos y bolsillo interno.",
+      "description": "Kit de agenda diaria 2027, bolígrafo con tinta de escritura negra. Cubierta fabricada en curpiel con resorte sujetador e interior de 175 hojas de 65 g. Cada día tiene espacio para tareas importantes y está organizada por horario. Cuenta con: separador de hojas, calendario anual 2026-2028, planeador mensual, hoja de objetivos anuales, pendientes mensuales, espacio para notas, tareas, sección de contactos y bolsillo interno para almacenar documentos.",
       "includes": [
-        "Agenda Diaria 2027 (hojas de 65g)",
-        "Bolígrafo con tinta negra",
+        "Agenda Diaria 2027 (hojas de 65 g)",
+        "Bolígrafo con tinta de escritura negra",
         "Caja de cartón individual"
       ],
       "colors": [
+        { "color": "Azul Claro", "hex": "#87ceeb", "text": "has-text-dark" },
         { "color": "Rosa Claro", "hex": "#ffb6c1", "text": "has-text-dark" },
-        { "color": "Verde Esmeralda", "hex": "#2ecc71", "text": "has-text-white" },
-        { "color": "Azul Claro", "hex": "#87ceeb", "text": "has-text-dark" }
+        { "color": "Verde Esmeralda", "hex": "#2ecc71", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Curpiel (PU), Papel 65g, Cartón"
+      "material": "Curpiel",
+      "peso": "0.600 kg.",
+      "medidas": "21.3×15 cm.",
+      "areaImpresion": "10×10 cm."
     },
     "card": {
       "type": "Etiqueta",
@@ -226,12 +310,23 @@
     "id": 8,
     "title": "MODELO STRAT",
     "description": "Agenda semanal 2027 para una planeación visual eficiente a la semana, con accesorios incluidos.",
-    "imageUrls": ["/images/products/8.webp", "/images/products/8-1.webp"],
+    "imageUrls": [
+      "/images/products/8.webp", 
+      "/images/products/8-1.webp",
+      "/images/products/8-2.webp",
+      "/images/products/8-3.webp",
+      "/images/products/8-4.webp",
+      "/images/products/8-5.webp",
+      "/images/products/8-6.webp",
+      "/images/products/8-7.webp",
+      "/images/products/8-8.webp",
+      "/images/products/8-9.webp"
+    ],
     "details": {
-      "description": "Cubierta en curpiel con resorte. Interior con 80 hojas de 65g organizadas por horario semanal (5am - 10pm). Incluye calendarios, planeador mensual, objetivos y bolsillo interno.",
+      "description": "Kit de agenda semanal 2027, bolígrafo con tinta de escritura negra. Cubierta fabricada en curpiel con resorte sujetador e interior con 80 hojas de 65 g. Cada semana tiene espacio para tareas importantes y está organizada por horario (5:00 am - 22:00 pm). Cuenta con: Separador de hojas, calendario anual 2026-2028, planeador mensual, hoja de objetivos anuales, hoja de pendientes mensuales, espacio para notas, tareas, sección de contactos y bolsillo interno para almacenar documentos.",
       "includes": [
-        "Agenda Semanal 2027 (80 hojas de 65g)",
-        "Bolígrafo con tinta negra",
+        "Agenda Semanal 2027 (80 hojas de 65 g)",
+        "Bolígrafo con tinta de escritura negra",
         "Caja de cartón individual"
       ],
       "colors": [
@@ -241,7 +336,10 @@
         { "color": "Rojo", "hex": "#c0392b", "text": "has-text-white" }
       ],
       "typographies": ["Serif (Clásica y formal)", "Sans-Serif (Moderna y limpia)", "Script (Elegante y cursiva)"],
-      "material": "Curpiel (PU), Papel 65g, Cartón"
+      "material": "Curpiel",
+      "peso": "0.60 kg.",
+      "medidas": "21.3×15 cm.",
+      "areaImpresion": "10×10 cm."
     },
     "card": {
       "type": "Etiqueta",
