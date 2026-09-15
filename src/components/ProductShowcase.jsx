@@ -63,7 +63,7 @@ export default function ProductShowcase({ product, index }) {
       setFormData({
         colorProducto: product.details.colors?.[0]?.color || '',
         tipoGrabado: 'Logotipo',
-        tipografia: 'No aplica', 
+        tipografia: 'Sin tipografía', // Alineado con la BD
         colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
         empresa: '',
         correo: '',
@@ -74,13 +74,14 @@ export default function ProductShowcase({ product, index }) {
     }
   }, [product]);
 
-  // Lógica de auto-selección: Forzar "No aplica" si escogen Logotipo
+  // Lógica de auto-selección: Forzar "Sin tipografía" si escogen Logotipo
   useEffect(() => {
     if (formData.tipoGrabado === 'Solo Logo' || formData.tipoGrabado === 'Logotipo') {
-      setFormData(prev => ({ ...prev, tipografia: 'No aplica' }));
+      setFormData(prev => ({ ...prev, tipografia: 'Sin tipografía' }));
     } else {
-      if (formData.tipografia === 'No aplica' && product.details.typographies) {
-        const firstValidFont = product.details.typographies.find(t => t !== 'No aplica');
+      // Si cambian a otra cosa y estaba en 'Sin tipografía', seleccionamos la primera fuente válida
+      if (formData.tipografia === 'Sin tipografía' && product.details.typographies) {
+        const firstValidFont = product.details.typographies.find(t => t !== 'Sin tipografía');
         if (firstValidFont) {
           setFormData(prev => ({ ...prev, tipografia: firstValidFont }));
         }
@@ -92,22 +93,17 @@ export default function ProductShowcase({ product, index }) {
   useEffect(() => {
     const calculateScale = () => {
       if (previewContainerRef.current && previewTextRef.current) {
-        // Obtenemos el ancho interior de la caja de previsualización menos un margen de seguridad
         const containerWidth = previewContainerRef.current.offsetWidth - 40;
-        // Obtenemos el ancho real y "natural" del texto sin escalar
         const textWidth = previewTextRef.current.offsetWidth; 
         
-        // Si el texto es más ancho que la caja, calculamos la escala matemática para encogerlo
         if (textWidth > containerWidth && textWidth > 0) {
           setTextScale(containerWidth / textWidth);
         } else {
-          // Si cabe perfectamente, mantenemos la escala original
           setTextScale(1);
         }
       }
     };
 
-    // Un pequeño retardo asegura que la fuente y la caja se hayan renderizado antes de medir
     const timeoutId = setTimeout(calculateScale, 50);
     return () => clearTimeout(timeoutId);
   }, [previewText, formData.tipografia, step]);
@@ -136,7 +132,7 @@ export default function ProductShowcase({ product, index }) {
       setFormData({
         colorProducto: product.details.colors?.[0]?.color || '',
         tipoGrabado: 'Logotipo',
-        tipografia: 'No aplica',
+        tipografia: 'Sin tipografía',
         colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
         empresa: '',
         correo: '',
@@ -144,7 +140,7 @@ export default function ProductShowcase({ product, index }) {
         cantidad: 50
       });
       setPreviewText('Preview name');
-      setTextScale(1); // Reseteamos la escala por seguridad
+      setTextScale(1); 
       setOrderId('');
     }, 500); 
   };
@@ -172,7 +168,7 @@ export default function ProductShowcase({ product, index }) {
     const newOrderId = 'NMBX-' + Math.random().toString(36).substring(2, 7).toUpperCase();
     setOrderId(newOrderId);
 
-    const tipografiaFinal = isFontDisabled ? 'No aplica' : formData.tipografia;
+    const tipografiaFinal = isFontDisabled ? 'Sin tipografía' : formData.tipografia;
     const textoGrabadoFinal = isFontDisabled ? 'No aplica' : previewText;
 
     const pedidoCompleto = {
@@ -446,9 +442,20 @@ export default function ProductShowcase({ product, index }) {
                               cursor: isFontDisabled ? 'not-allowed' : 'pointer'
                             }}
                           >
-                            {product.details.typographies?.map((tipo, i) => (
-                              <option key={i} value={tipo}>{tipo}</option>
-                            ))}
+                            {product.details.typographies?.map((tipo, i) => {
+                              // Deshabilita y oculta visualmente la opción "Sin tipografía" cuando se requiere elegir una fuente real
+                              const disableOption = !isFontDisabled && tipo === 'Sin tipografía';
+                              return (
+                                <option 
+                                  key={i} 
+                                  value={tipo} 
+                                  disabled={disableOption}
+                                  hidden={disableOption}
+                                >
+                                  {tipo}
+                                </option>
+                              );
+                            })}
                           </select>
                         </div>
                       </div>

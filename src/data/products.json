@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "MODELO NEXUS",
-    "description": "Este set ejecutivo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.",
+    "description": "Este kit corporativo combina practicidad y estilo en una selección de artículos ideales para el entorno profesional.",
     "imageUrls": [
       "/images/products/1.webp", 
       "/images/products/1-1.webp",
@@ -34,7 +34,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -46,7 +46,7 @@
   {
     "id": 2,
     "title": "MODELO VERTEX",
-    "description": "Set ejecutivo que ofrece funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe con estilo.",
+    "description": "Kit corporativo que ofrece funcionalidad sin sacrificar la elegancia, garantizando que su marca acompañe con estilo.",
     "imageUrls": [
       "/images/products/2.webp", 
       "/images/products/2-1.webp",
@@ -73,7 +73,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -85,7 +85,7 @@
   {
     "id": 3,
     "title": "MODELO VOLT",
-    "description": "Set ejecutivo premium, integra funcionalidad tecnológica y diseño en un solo kit.",
+    "description": "Kit corporativo premium, integra funcionalidad tecnológica y diseño en un solo kit.",
     "imageUrls": [
     "/images/products/3.webp", 
     "/images/products/3-1.webp",
@@ -116,7 +116,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -128,14 +128,15 @@
   {
     "id": 4,
     "title": "MODELO ONE",
-    "description": "Set empaquetado en caja de regalo con diseño ejecutivo y espacio adecuado para guardar bolígrafo y libreta.",
+    "description": "Kit corporativo en caja de regalo tipo boutique con diseño ejecutivo y espacio adecuado para guardar bolígrafo y libreta.",
     "imageUrls": [
       "/images/products/4.webp", 
       "/images/products/4-1.webp",
       "/images/products/4-2.webp",
       "/images/products/4-3.webp",
       "/images/products/4-4.webp",
-      "/images/products/4-5.webp"
+      "/images/products/4-5.webp",
+      "/images/products/4-6.webp"
     ],
     "details": {
       "description": "Kit corporativo, incluye libreta tamaño A5, de 80 g y 100 hojas, bolígrafo con tinta de escritura en color negro.",
@@ -157,7 +158,7 @@
     },
     "card": {
       "type": "Tag",
-      "description": "Etiqueta pequeña (5.5x7 cm) adherida con un sujetador plástico por fuera del kit. Se personaliza únicamente con tu logotipo.",
+      "description": "Tag adherido con sujetador plástico. Se personaliza únicamente con tu logotipo.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/tag/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/tag/verde.webp" },
@@ -199,7 +200,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Cuadro de material premium (8x11 cm). Cada color tiene un diseño único donde lo único que se agrega es el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -243,7 +244,7 @@
     },
     "card": {
       "type": "Etiqueta",
-      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
         { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
@@ -285,7 +286,7 @@
     },
     "card": {
       "type": "Etiqueta",
-      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
         { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
@@ -328,7 +329,7 @@
     },
     "card": {
       "type": "Etiqueta",
-      "description": "Franja de material que rodea el empaque del producto. Consta de un diseño específico por color donde se configura únicamente tu logotipo.",
+      "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
         { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
