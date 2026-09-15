@@ -34,7 +34,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -73,7 +73,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -116,7 +116,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
+      "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },
@@ -200,7 +200,7 @@
     },
     "card": {
       "type": "Tarjeta",
-      "description": "Tarjeta de agradecimiento premium (8x11 cm). Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa",
+      "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
         { "color": "Verde Claro", "hex": "#2ecc71", "previewImage": "/images/card/verde.webp" },

@@ -40,7 +40,7 @@ export default function ProductShowcase({ product, index }) {
   // Estado para el texto del previsualizador de fuentes
   const [previewText, setPreviewText] = useState('Preview name');
 
-  // --- NUEVAS REFERENCIAS Y ESTADOS PARA ESCALADO DE TEXTO ---
+  // --- REFERENCIAS Y ESTADOS PARA ESCALADO DE TEXTO ---
   const previewContainerRef = useRef(null);
   const previewTextRef = useRef(null);
   const [textScale, setTextScale] = useState(1);
@@ -57,13 +57,13 @@ export default function ProductShowcase({ product, index }) {
     cantidad: 50
   });
 
-  // Inicializar selectores cuando el componente se monta o cambia el producto
+  // Inicializar selectores
   useEffect(() => {
     if (product.details) {
       setFormData({
         colorProducto: product.details.colors?.[0]?.color || '',
         tipoGrabado: 'Logotipo',
-        tipografia: 'Sin tipografía', // Alineado con la BD
+        tipografia: 'Sin tipografía', 
         colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
         empresa: '',
         correo: '',
@@ -79,7 +79,6 @@ export default function ProductShowcase({ product, index }) {
     if (formData.tipoGrabado === 'Solo Logo' || formData.tipoGrabado === 'Logotipo') {
       setFormData(prev => ({ ...prev, tipografia: 'Sin tipografía' }));
     } else {
-      // Si cambian a otra cosa y estaba en 'Sin tipografía', seleccionamos la primera fuente válida
       if (formData.tipografia === 'Sin tipografía' && product.details.typographies) {
         const firstValidFont = product.details.typographies.find(t => t !== 'Sin tipografía');
         if (firstValidFont) {
@@ -89,7 +88,7 @@ export default function ProductShowcase({ product, index }) {
     }
   }, [formData.tipoGrabado, product.details.typographies]);
 
-  // --- NUEVA LÓGICA: AUTO-ESCALADO DEL TEXTO DE GRABADO ---
+  // --- LÓGICA: AUTO-ESCALADO DEL TEXTO DE GRABADO ---
   useEffect(() => {
     const calculateScale = () => {
       if (previewContainerRef.current && previewTextRef.current) {
@@ -145,7 +144,7 @@ export default function ProductShowcase({ product, index }) {
     }, 500); 
   };
 
-  // Función para determinar el estilo de fuente dinámicamente según la selección
+  // Función para determinar el estilo de fuente
   const getFontStyles = (fontName) => {
     const nameLower = (fontName || '').toLowerCase();
     if (nameLower.includes('dunbar')) return { fontFamily: '"Dunbar Tall", sans-serif', fontWeight: 'bold' };
@@ -157,7 +156,6 @@ export default function ProductShowcase({ product, index }) {
     return { fontFamily: 'sans-serif' };
   };
 
-  // Lógica para bloquear la fuente
   const isFontDisabled = formData.tipoGrabado === 'Solo Logo' || formData.tipoGrabado === 'Logotipo';
 
   // Función Híbrida: Envío a Netlify Forms + Guardado en LocalStorage
@@ -332,10 +330,10 @@ export default function ProductShowcase({ product, index }) {
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.95, y: 15, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              style={{ backgroundColor: '#ffffff', padding: '2.5rem', borderRadius: '12px', width: '100%', maxWidth: '600px', position: 'relative', boxShadow: '0 25px 50px rgba(0,0,0,0.25)', maxHeight: '90vh', overflowY: 'auto' }}
+              className="custom-modal-box" /* <-- IMPLEMENTACIÓN DE CSS RESPONSIVE */
             >
               {step !== 4 && (
-                <button onClick={resetFormAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease' }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
+                <button onClick={resetFormAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
               )}
 
               {/* PASO 0: SOLO DETALLES */}
@@ -412,7 +410,8 @@ export default function ProductShowcase({ product, index }) {
                     </div>
                   </div>
 
-                  <div className="columns is-mobile mb-2">
+                  {/* QUITAMOS is-mobile PARA QUE EN TELÉFONOS SE APILEN UNO SOBRE OTRO CORRECTAMENTE */}
+                  <div className="columns mb-2"> 
                     <div className="column is-6 field mb-4">
                       <label className="label is-small has-text-black">2. Tipo de Grabado</label>
                       <div className="control">
@@ -443,7 +442,6 @@ export default function ProductShowcase({ product, index }) {
                             }}
                           >
                             {product.details.typographies?.map((tipo, i) => {
-                              // Deshabilita y oculta visualmente la opción "Sin tipografía" cuando se requiere elegir una fuente real
                               const disableOption = !isFontDisabled && tipo === 'Sin tipografía';
                               return (
                                 <option 
@@ -483,15 +481,14 @@ export default function ProductShowcase({ product, index }) {
                           onChange={(e) => setPreviewText(e.target.value)} 
                           placeholder="Escribe el nombre o texto a grabar..." 
                           style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }}
-                          maxLength={35} // Evitamos excesos crudos, pero igual se auto-escalará
+                          maxLength={35} 
                         />
                         
-                        {/* CONTENEDOR MODIFICADO PARA AUTO-ESCALAR EN 1 SOLA LÍNEA */}
                         <div 
                           className="font-preview-box" 
                           ref={previewContainerRef}
                           style={{ 
-                            overflow: 'hidden', // Esconde desbordes temporales antes de medir
+                            overflow: 'hidden', 
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -505,9 +502,9 @@ export default function ProductShowcase({ product, index }) {
                               fontSize: '2rem',
                               color: '#1e293b',
                               lineHeight: '1.2',
-                              whiteSpace: 'nowrap', // RESTRICCIÓN CLAVE: Prohíbe múltiples líneas
+                              whiteSpace: 'nowrap', 
                               display: 'inline-block',
-                              transform: `scale(${textScale})`, // Aplicación de la matemática de escala
+                              transform: `scale(${textScale})`, 
                               transformOrigin: 'center',
                               transition: 'font-family 0.3s ease, transform 0.1s ease-out'
                             }}>
@@ -545,16 +542,7 @@ export default function ProductShowcase({ product, index }) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        style={{ 
-                          width: '100%', 
-                          height: '320px', 
-                          borderRadius: '8px', 
-                          overflow: 'hidden', 
-                          border: '1px solid #cbd5e1',
-                          backgroundColor: '#ffffff',
-                          marginBottom: '1.5rem',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
-                        }}
+                        className="card-preview-wrapper" /* <-- IMPLEMENTACIÓN DE CSS RESPONSIVE */
                       >
                         <img 
                           src={selectedCardObj.previewImage} 
@@ -616,7 +604,8 @@ export default function ProductShowcase({ product, index }) {
                       </div>
                     </div>
 
-                    <div className="columns is-mobile mb-0">
+                    {/* QUITAMOS is-mobile PARA QUE EN TELÉFONOS SE APILEN UNO SOBRE OTRO */}
+                    <div className="columns mb-0"> 
                       <div className="column is-6 field">
                         <label className="label is-small has-text-grey-dark">WhatsApp *</label>
                         <div className="control">
