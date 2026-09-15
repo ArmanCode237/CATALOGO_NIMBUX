@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ProductShowcase.css';
 
@@ -37,10 +37,18 @@ export default function ProductShowcase({ product, index }) {
   const [orderId, setOrderId] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Estado para el texto del previsualizador de fuentes
+  const [previewText, setPreviewText] = useState('Preview name');
+
+  // --- NUEVAS REFERENCIAS Y ESTADOS PARA ESCALADO DE TEXTO ---
+  const previewContainerRef = useRef(null);
+  const previewTextRef = useRef(null);
+  const [textScale, setTextScale] = useState(1);
+
   // Datos del formulario
   const [formData, setFormData] = useState({
     colorProducto: '',
-    tipoGrabado: 'Solo Logo',
+    tipoGrabado: 'Logotipo', 
     tipografia: '',
     colorTarjeta: '',
     empresa: '',
@@ -49,17 +57,60 @@ export default function ProductShowcase({ product, index }) {
     cantidad: 50
   });
 
-  // Inicializar selectores
+  // Inicializar selectores cuando el componente se monta o cambia el producto
   useEffect(() => {
     if (product.details) {
-      setFormData(prev => ({
-        ...prev,
+      setFormData({
         colorProducto: product.details.colors?.[0]?.color || '',
-        tipografia: product.details.typographies?.[0] || '',
-        colorTarjeta: product.card?.availabilityColors?.[0]?.color || ''
-      }));
+        tipoGrabado: 'Logotipo',
+        tipografia: 'No aplica', 
+        colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
+        empresa: '',
+        correo: '',
+        whatsapp: '',
+        cantidad: 50
+      });
+      setPreviewText('Preview name');
     }
   }, [product]);
+
+  // Lógica de auto-selección: Forzar "No aplica" si escogen Logotipo
+  useEffect(() => {
+    if (formData.tipoGrabado === 'Solo Logo' || formData.tipoGrabado === 'Logotipo') {
+      setFormData(prev => ({ ...prev, tipografia: 'No aplica' }));
+    } else {
+      if (formData.tipografia === 'No aplica' && product.details.typographies) {
+        const firstValidFont = product.details.typographies.find(t => t !== 'No aplica');
+        if (firstValidFont) {
+          setFormData(prev => ({ ...prev, tipografia: firstValidFont }));
+        }
+      }
+    }
+  }, [formData.tipoGrabado, product.details.typographies]);
+
+  // --- NUEVA LÓGICA: AUTO-ESCALADO DEL TEXTO DE GRABADO ---
+  useEffect(() => {
+    const calculateScale = () => {
+      if (previewContainerRef.current && previewTextRef.current) {
+        // Obtenemos el ancho interior de la caja de previsualización menos un margen de seguridad
+        const containerWidth = previewContainerRef.current.offsetWidth - 40;
+        // Obtenemos el ancho real y "natural" del texto sin escalar
+        const textWidth = previewTextRef.current.offsetWidth; 
+        
+        // Si el texto es más ancho que la caja, calculamos la escala matemática para encogerlo
+        if (textWidth > containerWidth && textWidth > 0) {
+          setTextScale(containerWidth / textWidth);
+        } else {
+          // Si cabe perfectamente, mantenemos la escala original
+          setTextScale(1);
+        }
+      }
+    };
+
+    // Un pequeño retardo asegura que la fuente y la caja se hayan renderizado antes de medir
+    const timeoutId = setTimeout(calculateScale, 50);
+    return () => clearTimeout(timeoutId);
+  }, [previewText, formData.tipografia, step]);
 
   const images = product.imageUrls || (product.imageUrl ? [product.imageUrl] : []);
   const hasMultipleImages = images.length > 1;
@@ -77,49 +128,87 @@ export default function ProductShowcase({ product, index }) {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  // Función para resetear completamente el formulario y cerrar el modal
+  const resetFormAndClose = () => {
     setIsModalOpen(false);
-    setTimeout(() => setStep(0), 500); 
+    setTimeout(() => {
+      setStep(0);
+      setFormData({
+        colorProducto: product.details.colors?.[0]?.color || '',
+        tipoGrabado: 'Logotipo',
+        tipografia: 'No aplica',
+        colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
+        empresa: '',
+        correo: '',
+        whatsapp: '',
+        cantidad: 50
+      });
+      setPreviewText('Preview name');
+      setTextScale(1); // Reseteamos la escala por seguridad
+      setOrderId('');
+    }, 500); 
   };
+
+  // Función para determinar el estilo de fuente dinámicamente según la selección
+  const getFontStyles = (fontName) => {
+    const nameLower = (fontName || '').toLowerCase();
+    if (nameLower.includes('dunbar')) return { fontFamily: '"Dunbar Tall", sans-serif', fontWeight: 'bold' };
+    if (nameLower.includes('nexa')) return { fontFamily: '"Nexa Script", cursive', fontWeight: '600' };
+    if (nameLower.includes('future')) return { fontFamily: '"Future Tense", sans-serif', fontWeight: 'normal' };
+    
+    if (nameLower.includes('script') || nameLower.includes('cursiva')) return { fontFamily: 'cursive' };
+    if (nameLower.includes('serif')) return { fontFamily: 'serif' };
+    return { fontFamily: 'sans-serif' };
+  };
+
+  // Lógica para bloquear la fuente
+  const isFontDisabled = formData.tipoGrabado === 'Solo Logo' || formData.tipoGrabado === 'Logotipo';
 
   // Función Híbrida: Envío a Netlify Forms + Guardado en LocalStorage
   const handleSubmitOrder = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Generar ID único temporal
     const newOrderId = 'NMBX-' + Math.random().toString(36).substring(2, 7).toUpperCase();
     setOrderId(newOrderId);
 
-    // 1. Preparar el objeto completo para nuestra mini base de datos local
+    const tipografiaFinal = isFontDisabled ? 'No aplica' : formData.tipografia;
+    const textoGrabadoFinal = isFontDisabled ? 'No aplica' : previewText;
+
     const pedidoCompleto = {
       orderId: newOrderId,
       fecha: new Date().toLocaleString(),
       producto: product.title,
-      ...formData
+      textoGrabado: textoGrabadoFinal, 
+      ...formData,
+      tipografia: tipografiaFinal
     };
 
-    // 2. Preparar los datos codificados para enviar a Netlify
     const formPayload = new URLSearchParams();
     formPayload.append('form-name', 'cotizaciones');
     formPayload.append('orderId', newOrderId);
     formPayload.append('producto', product.title);
-    Object.keys(formData).forEach(key => formPayload.append(key, formData[key]));
+    formPayload.append('textoGrabado', textoGrabadoFinal);
+    
+    Object.keys(formData).forEach(key => {
+      if (key === 'tipografia') {
+        formPayload.append(key, tipografiaFinal);
+      } else {
+        formPayload.append(key, formData[key]);
+      }
+    });
 
     try {
-      // --- ALMACENAMIENTO LOCAL ---
       const historialPedidos = JSON.parse(localStorage.getItem('historialCotizaciones')) || [];
       historialPedidos.push(pedidoCompleto);
       localStorage.setItem('historialCotizaciones', JSON.stringify(historialPedidos));
 
-      // --- ALMACENAMIENTO REMOTO (NETLIFY) ---
       await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formPayload.toString()
       });
 
-      // Avanzamos al éxito (Paso 4)
       setStep(4); 
     } catch (error) {
       console.error("Error al procesar el pedido:", error);
@@ -195,9 +284,9 @@ export default function ProductShowcase({ product, index }) {
             </motion.p>
 
             <motion.div variants={textItemVariants} className="subtitle mb-6">
-              {product.details.colors.map((item, index) => (
+              {product.details.colors.map((item, dotIndex) => (
                 <div
-                  key={index}
+                  key={dotIndex}
                   className="dot"
                   style={{ backgroundColor: item.hex }}
                 />
@@ -250,7 +339,7 @@ export default function ProductShowcase({ product, index }) {
               style={{ backgroundColor: '#ffffff', padding: '2.5rem', borderRadius: '12px', width: '100%', maxWidth: '600px', position: 'relative', boxShadow: '0 25px 50px rgba(0,0,0,0.25)', maxHeight: '90vh', overflowY: 'auto' }}
             >
               {step !== 4 && (
-                <button onClick={closeModal} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease' }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
+                <button onClick={resetFormAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease' }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
               )}
 
               {/* PASO 0: SOLO DETALLES */}
@@ -319,7 +408,6 @@ export default function ProductShowcase({ product, index }) {
                           style={{ backgroundColor: item.hex || '#f5f5f5', border: formData.colorProducto === item.color ? '2px solid #000' : '1px solid #dbdbdb', borderRadius: '6px' }}
                         >
                           {item.color} 
-                          {/* SOLUCIÓN: Envolver el check en un span que no se destruye, solo se oculta */}
                           <span style={{ display: formData.colorProducto === item.color ? 'inline' : 'none' }}>
                             {' '}✓
                           </span>
@@ -334,9 +422,9 @@ export default function ProductShowcase({ product, index }) {
                       <div className="control">
                         <div className="select is-fullwidth">
                           <select className='has-text-black' name="tipoGrabado" value={formData.tipoGrabado} onChange={handleInputChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
-                            <option value="Solo Logo">Solo Logo</option>
-                            <option value="Solo Nombre">Nombre de la persona</option>
-                            <option value="Logo + Nombre">Logo + Nombre</option>
+                            <option value="Logotipo">Logotipo</option>
+                            <option value="(1) Nombre y (1) Apellido">(1) Nombre y (1) Apellido</option>
+                            <option value="Logo + Nombre">Logotipo + (1) Nombre y (1) Apellido</option>
                           </select>
                         </div>
                       </div>
@@ -345,16 +433,84 @@ export default function ProductShowcase({ product, index }) {
                     <div className="column is-6 field mb-4">
                       <label className="label is-small has-text-black">3. Tipografía</label>
                       <div className="control">
-                        <div className="select is-fullwidth">
-                          <select className='has-text-black' name="tipografia" value={formData.tipografia} onChange={handleInputChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                        <div className={`select is-fullwidth ${isFontDisabled ? 'is-disabled' : ''}`}>
+                          <select 
+                            className={isFontDisabled ? 'has-text-grey' : 'has-text-black'} 
+                            name="tipografia" 
+                            value={formData.tipografia} 
+                            onChange={handleInputChange} 
+                            disabled={isFontDisabled}
+                            style={{ 
+                              borderRadius: '6px', 
+                              backgroundColor: isFontDisabled ? '#e2e8f0' : '#fcfcfc',
+                              cursor: isFontDisabled ? 'not-allowed' : 'pointer'
+                            }}
+                          >
                             {product.details.typographies?.map((tipo, i) => (
                               <option key={i} value={tipo}>{tipo}</option>
                             ))}
                           </select>
                         </div>
                       </div>
+                      {isFontDisabled && (
+                        <p className="help mt-1" style={{ color: '#64748b' }}>No requerida en solo Logotipo.</p>
+                      )}
                     </div>
                   </div>
+
+                  {/* --- VISOR INTERACTIVO DE FUENTES --- */}
+                  <AnimatePresence>
+                    {!isFontDisabled && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }} 
+                        animate={{ opacity: 1, height: 'auto' }} 
+                        exit={{ opacity: 0, height: 0 }}
+                        style={{ overflow: 'hidden' }}
+                        className="mb-5"
+                      >
+                        <label className="label is-small has-text-black">4. Previsualización de Grabado</label>
+                        <input 
+                          type="text" 
+                          className="input has-text-black mb-3" 
+                          value={previewText} 
+                          onChange={(e) => setPreviewText(e.target.value)} 
+                          placeholder="Escribe el nombre o texto a grabar..." 
+                          style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }}
+                          maxLength={35} // Evitamos excesos crudos, pero igual se auto-escalará
+                        />
+                        
+                        {/* CONTENEDOR MODIFICADO PARA AUTO-ESCALAR EN 1 SOLA LÍNEA */}
+                        <div 
+                          className="font-preview-box" 
+                          ref={previewContainerRef}
+                          style={{ 
+                            overflow: 'hidden', // Esconde desbordes temporales antes de medir
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '1.5rem'
+                          }}
+                        >
+                          <span 
+                            ref={previewTextRef}
+                            style={{ 
+                              ...getFontStyles(formData.tipografia),
+                              fontSize: '2rem',
+                              color: '#1e293b',
+                              lineHeight: '1.2',
+                              whiteSpace: 'nowrap', // RESTRICCIÓN CLAVE: Prohíbe múltiples líneas
+                              display: 'inline-block',
+                              transform: `scale(${textScale})`, // Aplicación de la matemática de escala
+                              transformOrigin: 'center',
+                              transition: 'font-family 0.3s ease, transform 0.1s ease-out'
+                            }}>
+                            {previewText || 'Preview name'}
+                          </span>
+                        </div>
+
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   <button onClick={() => setStep(2)} className="button is-black is-fullwidth mt-5" style={{ borderRadius: '0', padding: '1.2rem', transition: 'background-color 0.3s' }}>
                     CONTINUAR A TARJETA DE AGRADECIMIENTO →
@@ -374,20 +530,17 @@ export default function ProductShowcase({ product, index }) {
                   
                 <div className="box mt-2 mb-5" style={{ backgroundColor: '#f4f6f8', border: '1px solid #e2e8f0', boxShadow: 'none', padding: '1.5rem' }}>
                     <p className="help mb-4 has-text-weight-medium" style={{ color: '#334155', fontSize: '0.88rem', lineHeight: '1.5' }}>
-                      {/* Aquí leemos la descripción dinámica de tu JSON (Tarjeta, Tag o Etiqueta) */}
                       {product.card?.description}
                     </p>
                     
-                    {/* Previsualización grande de la tarjeta */}
                     {selectedCardObj?.previewImage && (
                       <motion.div 
-                        key={selectedCardObj.color}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                         style={{ 
                           width: '100%', 
-                          height: '220px', 
+                          height: '320px', 
                           borderRadius: '8px', 
                           overflow: 'hidden', 
                           border: '1px solid #cbd5e1',
@@ -404,7 +557,6 @@ export default function ProductShowcase({ product, index }) {
                       </motion.div>
                     )}
 
-                    {/* Selector de color de tarjeta */}
                     <div className="field">
                       <label className="label is-small has-text-black">Color de {product.card?.type || 'Tarjeta'}</label>
                       <div className="control">
@@ -503,7 +655,7 @@ export default function ProductShowcase({ product, index }) {
                     </p>
                   </div>
 
-                  <button onClick={closeModal} className="button is-black is-fullwidth mt-6" style={{ borderRadius: '0', padding: '1.2rem' }}>
+                  <button onClick={resetFormAndClose} className="button is-black is-fullwidth mt-6" style={{ borderRadius: '0', padding: '1.2rem' }}>
                     FINALIZAR
                   </button>
                 </motion.div>
