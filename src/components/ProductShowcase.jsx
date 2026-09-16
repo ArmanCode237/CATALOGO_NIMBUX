@@ -517,7 +517,7 @@ export default function ProductShowcase({ product, index }) {
                   </AnimatePresence>
 
                   <button onClick={() => setStep(2)} className="button is-black is-fullwidth mt-5" style={{ borderRadius: '0', padding: '1.2rem', transition: 'background-color 0.3s' }}>
-                    CONTINUAR A TARJETA DE AGRADECIMIENTO →
+                    {product.card.continueMessage}
                   </button>
                 </motion.div>
               )}
@@ -542,13 +542,21 @@ export default function ProductShowcase({ product, index }) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="card-preview-wrapper" /* <-- IMPLEMENTACIÓN DE CSS RESPONSIVE */
+                        className="card-preview-wrapper" 
                       >
-                        <img 
-                          src={selectedCardObj.previewImage} 
-                          alt={`Previsualización de ${formData.colorTarjeta}`} 
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                        />
+                        {/* IMPLEMENTACIÓN DE ANIMACIÓN SUAVE ENTRE IMÁGENES */}
+                        <AnimatePresence mode="wait">
+                          <motion.img 
+                            key={selectedCardObj.color} /* El key dispara la animación al cambiar de color */
+                            src={selectedCardObj.previewImage} 
+                            alt={`Previsualización de ${formData.colorTarjeta}`} 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                          />
+                        </AnimatePresence>
                       </motion.div>
                     )}
 

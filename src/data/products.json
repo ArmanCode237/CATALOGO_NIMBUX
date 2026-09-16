@@ -34,6 +34,7 @@
     },
     "card": {
       "type": "Tarjeta",
+      "continueMessage":"SELECCIÓN TARJETA DE AGRADECIMIENTO →",
       "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
@@ -73,6 +74,7 @@
     },
     "card": {
       "type": "Tarjeta",
+      "continueMessage":"SELECCIÓN TARJETA DE AGRADECIMIENTO →",
       "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
@@ -116,6 +118,7 @@
     },
     "card": {
       "type": "Tarjeta",
+      "continueMessage":"SELECCIÓN TARJETA DE AGRADECIMIENTO →",
       "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
@@ -158,6 +161,7 @@
     },
     "card": {
       "type": "Tag",
+      "continueMessage":"SELECCIÓN DE TAG →",
       "description": "Tag adherido con sujetador plástico. Se personaliza únicamente con tu logotipo.",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/tag/rojo.webp" },
@@ -200,6 +204,7 @@
     },
     "card": {
       "type": "Tarjeta",
+      "continueMessage":"SELECCIÓN TARJETA DE AGRADECIMIENTO →",
       "description": "Tarjeta de agradecimiento premium. Cada color tiene un diseño único que hará resaltar el logotipo de tu empresa",
       "availabilityColors": [
         { "color": "Rojo", "hex": "#c0392b", "previewImage": "/images/card/rojo.webp" },
@@ -244,10 +249,11 @@
     },
     "card": {
       "type": "Etiqueta",
+      "continueMessage":"SELECCIÓN DE ETIQUETA →",
       "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
-        { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
+        { "color": "Blanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
         { "color": "Azul", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul.webp" },
         { "color": "Verde", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/verde.webp" }
       ]
@@ -286,10 +292,11 @@
     },
     "card": {
       "type": "Etiqueta",
+      "continueMessage":"SELECCIÓN DE ETIQUETA→",
       "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
-        { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
+        { "color": "Blanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
         { "color": "Azul", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul.webp" },
         { "color": "Verde", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/verde.webp" }
       ]
@@ -329,10 +336,11 @@
     },
     "card": {
       "type": "Etiqueta",
+      "continueMessage":"SELECCIÓN DE ETIQUETA →",
       "description": "Etiqueta que rodea el empaque del producto. Consta de un diseño especifico por color donde se configura únicamente tu logotipo.",
       "availabilityColors": [
         { "color": "Blanco vertical", "hex": "#ffffff", "previewImage": "/images/etiqueta/blanco-v.webp" },
-        { "color": "BLanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
+        { "color": "Blanco horizontal", "hex": "#2ecc71", "previewImage": "/images/etiqueta/blanco-h.webp" },
         { "color": "Azul", "hex": "#87ceeb", "previewImage": "/images/etiqueta/azul.webp" },
         { "color": "Verde", "hex": "#1b2a4a", "previewImage": "/images/etiqueta/verde.webp" }
       ]
