@@ -80,15 +80,40 @@
 /* Reglas específicas para pantallas de móviles y tablets pequeñas */
 @media (max-width: 768px) {
   .custom-modal-box {
-    padding: 1.5rem !important; /* Recuperamos espacio en móviles reduciendo el padding interno */
+    padding: 1.5rem 1.2rem !important; /* Recuperamos espacio interno a los lados */
+    max-height: 95dvh !important; /* Expandimos el modal para aprovechar casi toda la pantalla vertical */
+    max-width: 96dvh !important;
+    width: 90% !important;
   }
   
+  /* Evita que los campos se vean "aplastados" y mejora la experiencia táctil */
+  .custom-modal-box .control .input,
+  .custom-modal-box .control .select select,
+  .custom-modal-box .button {
+    min-height: 38px !important; /* Altura estándar ideal para tocar con el dedo */
+    font-size: 14px !important; /* IMPORTANTE: 16px evita que iOS Safari haga el molesto auto-zoom */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Da más respiro vertical entre cada pregunta del formulario */
+  .custom-modal-box .field {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .custom-modal-box .label {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  /* Ajustes de previsualizadores para ahorrar espacio vertical */
   .card-preview-wrapper {
-    height: 200px !important; /* Ajustamos la altura de la tarjeta para que no ocupe toda la pantalla */
+    height: 200px !important; 
+    margin-bottom: 1rem !important;
   }
   
   .font-preview-box {
     padding: 1rem !important;
-    min-height: 70px !important;
+    min-height: 75px !important;
   }
 }
