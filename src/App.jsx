@@ -1,16 +1,123 @@
 // src/App.jsx
-import { useRef, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import ProductShowcase from './components/ProductShowcase';
 import SnowEffect from './components/SnowEffect';
 import presentationProducts from './data/products.json';
 import './App.css';
 
 export default function App() {
-  // Referencia al contenedor que tendrá el scroll magnético
   const scrollContainerRef = useRef(null);
 
-  // --- SISTEMA DE PRECARGA GLOBAL (PRELOAD) ---
+  // --- ESTADOS PARA EL MODAL DE ASESORÍA ---
+  const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
+  const [assessmentStep, setAssessmentStep] = useState(0);
+  const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
+
+  // Estado con los valores del select
+  const [assessmentData, setAssessmentData] = useState({
+    presupuesto: '$15,000 - $25,000 MXN',
+    volumen: '20 - 50 piezas',
+    tiempo: 'Noviembre',
+    etapa: 'Ya tenemos presupuesto y buscamos proveedor para realizar el pedido',
+    tipo: 'Kits Corporativos',
+    nombre: '',
+    empresa: '',
+    correo: '',
+    whatsapp: ''
+  });
+
+  // ESTADO NUEVO: Para almacenar los textos personalizados cuando seleccionan "Otro"
+  const [customAssessmentData, setCustomAssessmentData] = useState({
+    presupuesto: '',
+    volumen: '',
+    tiempo: '',
+    etapa: '',
+    tipo: ''
+  });
+
+  // Detección de enlace personalizado (www.tusitio.com/#asesoria)
+  useEffect(() => {
+    if (window.location.hash === '#asesoria' || window.location.search.includes('asesoria=true')) {
+      setIsAssessmentOpen(true);
+    }
+  }, []);
+
+  const handleAssessmentChange = (e) => {
+    const { name, value } = e.target;
+    setAssessmentData({ ...assessmentData, [name]: value });
+  };
+
+  // NUEVO MANEJADOR: Para los inputs de "Otro"
+  const handleCustomAssessmentChange = (e) => {
+    const { name, value } = e.target;
+    setCustomAssessmentData({ ...customAssessmentData, [name]: value });
+  };
+
+  const resetAssessmentAndClose = () => {
+    setIsAssessmentOpen(false);
+    if (window.location.hash === '#asesoria') {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+    
+    setTimeout(() => {
+      setAssessmentStep(0);
+      setAssessmentData({
+        presupuesto: '$15,000 - $25,000 MXN',
+        volumen: '20 - 50 piezas',
+        tiempo: 'Noviembre',
+        etapa: 'Ya tenemos presupuesto y buscamos proveedor para realizar el pedido',
+        tipo: 'Kits Corporativos',
+        nombre: '',
+        empresa: '',
+        correo: '',
+        whatsapp: ''
+      });
+      // Reseteamos también los campos personalizados
+      setCustomAssessmentData({
+        presupuesto: '',
+        volumen: '',
+        tiempo: '',
+        etapa: '',
+        tipo: ''
+      });
+    }, 500);
+  };
+
+  const handleAssessmentSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmittingAssessment(true);
+
+    // Evaluamos si debemos enviar la opción del select o el texto escrito en "Otro"
+    const finalData = {
+      ...assessmentData,
+      presupuesto: assessmentData.presupuesto === 'Otro' ? customAssessmentData.presupuesto : assessmentData.presupuesto,
+      volumen: assessmentData.volumen === 'Otro' ? customAssessmentData.volumen : assessmentData.volumen,
+      tiempo: assessmentData.tiempo === 'Otro' ? customAssessmentData.tiempo : assessmentData.tiempo,
+      tipo: assessmentData.tipo === 'Otro' ? customAssessmentData.tipo : assessmentData.tipo,
+      etapa: assessmentData.etapa === 'Otro' ? customAssessmentData.etapa : assessmentData.etapa,
+    };
+
+    const formPayload = new URLSearchParams();
+    formPayload.append('form-name', 'asesoria');
+    Object.keys(finalData).forEach(key => formPayload.append(key, finalData[key]));
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formPayload.toString()
+      });
+      setAssessmentStep(2);
+    } catch (error) {
+      console.error("Error al procesar asesoría:", error);
+      alert("Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo.");
+    } finally {
+      setIsSubmittingAssessment(false);
+    }
+  };
+
+  // Sistema de precarga
   useEffect(() => {
     presentationProducts.forEach((product) => {
       const imagesToPreload = product.imageUrls || (product.imageUrl ? [product.imageUrl] : []);
@@ -20,9 +127,7 @@ export default function App() {
       });
     });
   }, []);
-  // --------------------------------------------
   
-  // Conectamos el progreso del scroll a nuestro contenedor específico
   const { scrollYProgress } = useScroll({ container: scrollContainerRef });
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -31,7 +136,7 @@ export default function App() {
   });
 
   return (
-<div 
+    <div 
       ref={scrollContainerRef}
       className="premium-dynamic-bg"
       style={{ 
@@ -40,13 +145,11 @@ export default function App() {
         scrollSnapType: 'y mandatory',
         scrollBehavior: 'smooth',
         WebkitOverflowScrolling: 'touch',
-        position: 'relative' // Asegura el anclaje de los elementos absolutos
+        position: 'relative' 
       }}
     >
-      {/* 2. Colocamos el efecto de nieve sutilmente flotando de fondo */}
       <SnowEffect />
 
-      {/* Barra de progreso global */}
       <motion.div
         style={{
           scaleX,
@@ -61,14 +164,14 @@ export default function App() {
         }}
       />
 
-      {/* PORTADA - Alineación de scroll al inicio */}
+      {/* PORTADA */}
       <section 
         className="hero" 
         style={{ 
           scrollSnapAlign: 'start', 
           minHeight: '100dvh',
           display: 'flex',
-          flexDirection: 'column' /* Restaura el comportamiento de pantalla completa */
+          flexDirection: 'column' 
         }}
       >
         <div className="hero-head">
@@ -87,7 +190,6 @@ export default function App() {
           </nav>
         </div>
 
-        {/* Agregamos Flexbox al hero-body para centrar el contenido verticalmente */}
         <div className="hero-body" style={{ flexGrow: 1, display: 'flex', alignItems: 'center', width: '100%' }}>
           <div className="container has-text-centered">
             <motion.div
@@ -113,6 +215,7 @@ export default function App() {
               >
                 REGALOS CORPORATIVOS
               </h2>
+              
               <motion.div 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -120,8 +223,25 @@ export default function App() {
                 transition={{ delay: 0.5, duration: 1 }}
                 className="mt-6"
               >
-                <p className="has-text-grey is-size-7 is-uppercase tracking-wide" style={{ letterSpacing: '3px' }}>
-                  Desliza para explorar
+                <div className="mb-6">
+                  <button 
+                    onClick={() => setIsAssessmentOpen(true)}
+                    className="button is-black is-outlined is-medium" 
+                    style={{ 
+                      borderRadius: '0', 
+                      padding: '1.4rem 2rem', 
+                      transition: 'all 0.3s ease', 
+                      border: '1px solid #ccc',
+                      letterSpacing: '2px',
+                      fontSize: '0.85rem'
+                    }}
+                  >
+                    SOLICITAR ASESORÍA PERSONALIZADA
+                  </button>
+                </div>
+
+                <p className="has-text-grey is-size-7 is-uppercase tracking-wide mt-6" style={{ letterSpacing: '3px' }}>
+                  Desliza para explorar el catálogo
                 </p>
                 <motion.div 
                   animate={{ y: [0, 8, 0] }}
@@ -141,12 +261,228 @@ export default function App() {
         <ProductShowcase key={product.id} product={product} index={index} />
       ))}
       
-      {/* FOOTER - Alineación de scroll al final */}
+      {/* FOOTER */}
       <footer className="section is-medium has-text-centered" style={{ scrollSnapAlign: 'end', minHeight: '30vh' }}>
         <p className="has-text-grey-light is-size-7 is-uppercase" style={{ letterSpacing: '2px' }}>
           @ 2026 NIMBUX - TODOS LOS DERECHOS RESERVADOS
         </p>
       </footer>
+
+      {/* --- MODAL DE ASESORÍA Y ENCUESTA --- */}
+      <AnimatePresence>
+        {isAssessmentOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ 
+              position: 'fixed', top: 0, left: 0, width: '100vw', height: '100dvh', 
+              backgroundColor: 'rgba(0, 0, 0, 0.65)', backdropFilter: 'blur(6px)', 
+              zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' 
+            }}
+          >
+            <motion.div 
+              initial={{ scale: 0.95, y: 15, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, y: 15, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="custom-modal-box"
+            >
+              {assessmentStep !== 2 && (
+                <button onClick={resetAssessmentAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
+              )}
+
+              {/* PASO 0: CUESTIONARIO ESTRATÉGICO CON PREGUNTAS EXACTAS E INPUTS "OTRO" */}
+              {assessmentStep === 0 && (
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Asesoría Personalizada</h3>
+                  <p className="is-size-7 has-text-grey uppercase mb-5" style={{ letterSpacing: '1px' }}>PASO 1 DE 2 - CUÉNTANOS SOBRE TU PROYECTO</p>
+
+                  <div className="field mb-4">
+                    <label className="label is-small has-text-black">¿Cuál es el presupuesto aproximado que tienes contemplado para tus regalos corporativos? *</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select className="has-text-black" name="presupuesto" value={assessmentData.presupuesto} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                          <option value="$15,000 - $25,000 MXN">$15,000 - $25,000 MXN</option>
+                          <option value="$25,000 - $50,000 MXN">$25,000 - $50,000 MXN</option>
+                          <option value="$50,000 - $100,000 MXN">$50,000 - $100,000 MXN</option>
+                          <option value="Más de $100,000 MXN">Más de $100,000 MXN</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    {/* Input condicional para 'Otro' */}
+                    <AnimatePresence>
+                      {assessmentData.presupuesto === 'Otro' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
+                          <input className="input has-text-black is-small" type="text" name="presupuesto" value={customAssessmentData.presupuesto} onChange={handleCustomAssessmentChange} placeholder="Por favor, especifica el monto..." required style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="field mb-4">
+                    <label className="label is-small has-text-black">¿Cuántos regalos corporativos necesitas aproximadamente? *</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select className="has-text-black" name="volumen" value={assessmentData.volumen} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                          <option value="20 - 50 piezas">20 - 50 piezas</option>
+                          <option value="51 - 100 piezas">51 - 100 piezas</option>
+                          <option value="101 - 200 piezas">101 - 200 piezas</option>
+                          <option value="Más de 200 piezas">Más de 200 piezas</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {assessmentData.volumen === 'Otro' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
+                          <input className="input has-text-black is-small" type="text" name="volumen" value={customAssessmentData.volumen} onChange={handleCustomAssessmentChange} placeholder="Por favor, especifica la cantidad..." required style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="field mb-4">
+                    <label className="label is-small has-text-black">¿Para cuándo necesitas recibir tu pedido? *</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select className="has-text-black" name="tiempo" value={assessmentData.tiempo} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                          <option value="Noviembre">Noviembre</option>
+                          <option value="Primera quincena de diciembre">Primera quincena de diciembre</option>
+                          <option value="Segunda quincena de diciembre">Segunda quincena de diciembre</option>
+                          <option value="Aún estoy definiendo la fecha">Aún estoy definiendo la fecha</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {assessmentData.tiempo === 'Otro' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
+                          <input className="input has-text-black is-small" type="text" name="tiempo" value={customAssessmentData.tiempo} onChange={handleCustomAssessmentChange} placeholder="Por favor, especifica la fecha o mes..." required style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="field mb-4">
+                    <label className="label is-small has-text-black">¿Qué tipo de regalos está buscando? *</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select className="has-text-black" name="tipo" value={assessmentData.tipo} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                          <option value="Kits Corporativos">Kits Corporativos</option>
+                          <option value="Agendas Corporativas">Agendas Corporativas</option>
+                          <option value="Quiero que Nimbux me recomiende opciones">Quiero que Nimbux me recomiende opciones</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {assessmentData.tipo === 'Otro' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
+                          <input className="input has-text-black is-small" type="text" name="tipo" value={customAssessmentData.tipo} onChange={handleCustomAssessmentChange} placeholder="Por favor, especifica el tipo de regalo..." required style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="field mb-5">
+                    <label className="label is-small has-text-black">¿En qué etapa se encuentra actualmente tu empresa? *</label>
+                    <div className="control">
+                      <div className="select is-fullwidth">
+                        <select className="has-text-black" name="etapa" value={assessmentData.etapa} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
+                          <option value="Ya tenemos presupuesto y buscamos proveedor para realizar el pedido">Ya tenemos presupuesto y buscamos proveedor para realizar el pedido</option>
+                          <option value="Estamos comparando proveedores antes de tomar una decisión">Estamos comparando proveedores antes de tomar una decisión</option>
+                          <option value="Necesitamos una cotización para autorización interna">Necesitamos una cotización para autorización interna</option>
+                          <option value="Apenas estamos explorando opciones">Apenas estamos explorando opciones</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {assessmentData.etapa === 'Otro' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
+                          <input className="input has-text-black is-small" type="text" name="etapa" value={customAssessmentData.etapa} onChange={handleCustomAssessmentChange} placeholder="Por favor, especifica la etapa..." required style={{ borderRadius: '6px', backgroundColor: '#fcfcfc', border: '1px solid #cbd5e1' }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <button onClick={() => setAssessmentStep(1)} className="button is-black is-fullwidth mt-2" style={{ borderRadius: '0', padding: '1.2rem', transition: 'background-color 0.3s' }}>
+                    CONTINUAR A DATOS DE CONTACTO →
+                  </button>
+                </motion.div>
+              )}
+
+              {/* PASO 1: DATOS DE CONTACTO */}
+              {assessmentStep === 1 && (
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Datos de Contacto</h3>
+                  <p className="is-size-7 has-text-grey uppercase mb-5" style={{ letterSpacing: '1px' }}>PASO 2 DE 2 - ¿A DÓNDE ENVIAMOS LA PROPUESTA?</p>
+                  
+                  <form onSubmit={handleAssessmentSubmit}>
+                    <div className="field mb-4">
+                      <label className="label is-small has-text-grey-dark">Tu Nombre *</label>
+                      <div className="control">
+                        <input className="input has-text-black" type="text" name="nombre" required value={assessmentData.nombre} onChange={handleAssessmentChange} placeholder="Ej. Juan Pérez" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                      </div>
+                    </div>
+
+                    <div className="field mb-4">
+                      <label className="label is-small has-text-grey-dark">Nombre de la Empresa *</label>
+                      <div className="control">
+                        <input className="input has-text-black" type="text" name="empresa" required value={assessmentData.empresa} onChange={handleAssessmentChange} placeholder="Ej. Corporativo Roca" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                      </div>
+                    </div>
+
+                    <div className="columns mb-0">
+                      <div className="column is-6 field mb-3">
+                        <label className="label is-small has-text-grey-dark">Correo Electrónico *</label>
+                        <div className="control">
+                          <input className="input has-text-black" type="email" name="correo" required value={assessmentData.correo} onChange={handleAssessmentChange} placeholder="contacto@empresa.com" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                        </div>
+                      </div>
+                      <div className="column is-6 field mb-3">
+                        <label className="label is-small has-text-grey-dark">WhatsApp *</label>
+                        <div className="control">
+                          <input className="input has-text-black" type="tel" name="whatsapp" required value={assessmentData.whatsapp} onChange={handleAssessmentChange} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 is-flex" style={{ gap: '15px' }}>
+                      <button type="button" onClick={() => setAssessmentStep(0)} className="button is-white is-outlined has-text-black" style={{ borderRadius: '0', width: '30%', padding: '1.2rem', border: '1px solid #ccc' }}>
+                        Volver
+                      </button>
+                      <button type="submit" className={`button is-black ${isSubmittingAssessment ? 'is-loading' : ''}`} style={{ borderRadius: '0', width: '70%', padding: '1.2rem' }}>
+                        SOLICITAR PROPUESTA
+                      </button>
+                    </div>
+                  </form>
+                </motion.div>
+              )}
+
+              {/* PASO 2: ÉXITO */}
+              {assessmentStep === 2 && (
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="has-text-centered py-5">
+                  <div className="mb-4">
+                    <span style={{ fontSize: '5rem', color: '#27ae60', display: 'inline-block', lineHeight: '1' }}>✓</span>
+                  </div>
+                  <h3 className="title is-3 has-text-weight-light has-text-black mb-4">Solicitud Recibida</h3>
+                  <p className="has-text-grey-dark mb-5" style={{ lineHeight: '1.6', fontSize: '1.05rem' }}>
+                    Hemos recibido la información de tu proyecto exitosamente. Un especialista de nuestro equipo se pondrá en contacto contigo muy pronto.
+                  </p>
+                  
+                  <button onClick={resetAssessmentAndClose} className="button is-black is-fullwidth mt-6" style={{ borderRadius: '0', padding: '1.2rem' }}>
+                    VOLVER AL CATÁLOGO
+                  </button>
+                </motion.div>
+              )}
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

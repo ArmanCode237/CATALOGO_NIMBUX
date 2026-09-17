@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- Formulario oculto para que Netlify Forms registre los campos para tu CSV -->
-  <form name="cotizaciones" netlify netlify-honeypot="bot-field" hidden>
+    <form name="cotizaciones" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="orderId" />
       <input type="text" name="producto" />
       <input type="text" name="colorProducto" />
@@ -20,6 +20,19 @@
       <input type="text" name="whatsapp" />
       <input type="number" name="cantidad" />
     </form>
+
+    <!-- NUEVO: Formulario oculto para ASESORÍAS -->
+    <form name="asesoria" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="presupuesto" />
+      <input type="text" name="volumen" />
+      <input type="text" name="tiempo" />
+      <input type="text" name="etapa" />
+      <input type="text" name="tipo" />
+      <input type="text" name="nombre" />
+      <input type="text" name="empresa" />
+      <input type="email" name="correo" />
+      <input type="text" name="whatsapp" />
+    </form>    
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
