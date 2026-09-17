@@ -303,12 +303,12 @@ export default function App() {
               {/* PASO 0: CUESTIONARIO ESTRATÉGICO CON PREGUNTAS EXACTAS E INPUTS "OTRO" */}
               {assessmentStep === 0 && (
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Regalos corporativos</h3>
+                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Regalos Corporativos</h3>
                   <p className="is-size-7 has-text-grey uppercase mb-5" style={{ letterSpacing: '1px' }}>PASO 1 DE 2 - CUÉNTANOS SOBRE TU PROYECTO</p>
 
                   {/* MENSAJE DE BIENVENIDA ADAPTADO */}
                   <div className="mb-5 has-text-grey-dark" style={{ lineHeight: '1.6', fontSize: '0.80rem', backgroundColor: '#fcfcfc', padding: '1rem', borderLeft: '4px solid #000', borderRadius: '4px' }}>
-                    <p className="mb-2">¡Hola! 👋 Gracias por tu interés en nuestra <span className='has-text-weight-bold has-text-black'>reserva de kits corporativos</span> Nimbux 2026. </p>
+                    <p className="mb-2">¡Hola! 👋 Gracias por tu interés en nuestra <span className='has-text-weight-bold has-text-black'>Reserva de Kits Corporativos</span> Nimbux 2026. </p>
                   </div>
 
                   <div className="field mb-4">
