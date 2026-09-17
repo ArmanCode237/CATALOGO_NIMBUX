@@ -21,8 +21,10 @@
       <input type="number" name="cantidad" />
     </form>
 
-    <!-- NUEVO: Formulario oculto para ASESORÍAS -->
+<!-- NUEVO: Formulario oculto para ASESORÍAS -->
     <form name="asesoria" netlify netlify-honeypot="bot-field" hidden>
+      <!-- Agregamos la etiqueta para recibir el ID personalizado -->
+      <input type="text" name="asesoriaId" /> 
       <input type="text" name="presupuesto" />
       <input type="text" name="volumen" />
       <input type="text" name="tiempo" />
@@ -32,7 +34,7 @@
       <input type="text" name="empresa" />
       <input type="email" name="correo" />
       <input type="text" name="whatsapp" />
-    </form>    
+    </form>  
 
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

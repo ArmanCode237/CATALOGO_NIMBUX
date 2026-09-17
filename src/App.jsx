@@ -27,7 +27,7 @@ export default function App() {
     whatsapp: ''
   });
 
-  // ESTADO NUEVO: Para almacenar los textos personalizados cuando seleccionan "Otro"
+  // ESTADO: Para almacenar los textos personalizados cuando seleccionan "Otro"
   const [customAssessmentData, setCustomAssessmentData] = useState({
     presupuesto: '',
     volumen: '',
@@ -48,7 +48,6 @@ export default function App() {
     setAssessmentData({ ...assessmentData, [name]: value });
   };
 
-  // NUEVO MANEJADOR: Para los inputs de "Otro"
   const handleCustomAssessmentChange = (e) => {
     const { name, value } = e.target;
     setCustomAssessmentData({ ...customAssessmentData, [name]: value });
@@ -73,7 +72,6 @@ export default function App() {
         correo: '',
         whatsapp: ''
       });
-      // Reseteamos también los campos personalizados
       setCustomAssessmentData({
         presupuesto: '',
         volumen: '',
@@ -88,8 +86,17 @@ export default function App() {
     e.preventDefault();
     setIsSubmittingAssessment(true);
 
+    // --- GENERACIÓN DEL ID PERSONALIZADO ---
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('es-MX');
+    const formattedTime = currentDate.toLocaleTimeString('es-MX');
+    // Si no escribieron empresa por alguna razón, usamos un valor por defecto
+    const nombreEmpresa = assessmentData.empresa.trim() || 'Empresa_No_Especificada';
+    const customId = `${nombreEmpresa} - ${formattedDate} - ${formattedTime}`;
+
     // Evaluamos si debemos enviar la opción del select o el texto escrito en "Otro"
     const finalData = {
+      asesoriaId: customId, // Inyectamos nuestro ID personalizado
       ...assessmentData,
       presupuesto: assessmentData.presupuesto === 'Otro' ? customAssessmentData.presupuesto : assessmentData.presupuesto,
       volumen: assessmentData.volumen === 'Otro' ? customAssessmentData.volumen : assessmentData.volumen,
@@ -311,7 +318,6 @@ export default function App() {
                         </select>
                       </div>
                     </div>
-                    {/* Input condicional para 'Otro' */}
                     <AnimatePresence>
                       {assessmentData.presupuesto === 'Otro' && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-2">
