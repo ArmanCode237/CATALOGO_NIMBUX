@@ -331,6 +331,7 @@ export default function ProductShowcase({ product, index }) {
               exit={{ scale: 0.95, y: 15, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="custom-modal-box" /* <-- IMPLEMENTACIÓN DE CSS RESPONSIVE */
+              style={{ width: '90%', maxWidth: '50%' }}
             >
               {step !== 4 && (
                 <button onClick={resetFormAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>

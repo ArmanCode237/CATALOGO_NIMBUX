@@ -294,6 +294,7 @@ export default function App() {
               exit={{ scale: 0.95, y: 15, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="custom-modal-box"
+              style={{ width: '90%', maxWidth: '50%' }}
             >
               {assessmentStep !== 2 && (
                 <button onClick={resetAssessmentAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
@@ -302,8 +303,13 @@ export default function App() {
               {/* PASO 0: CUESTIONARIO ESTRATÉGICO CON PREGUNTAS EXACTAS E INPUTS "OTRO" */}
               {assessmentStep === 0 && (
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Asesoría Personalizada</h3>
+                  <h3 className="title is-4 mb-2 has-text-weight-light has-text-black">Regalos corporativos</h3>
                   <p className="is-size-7 has-text-grey uppercase mb-5" style={{ letterSpacing: '1px' }}>PASO 1 DE 2 - CUÉNTANOS SOBRE TU PROYECTO</p>
+
+                  {/* MENSAJE DE BIENVENIDA ADAPTADO */}
+                  <div className="mb-5 has-text-grey-dark" style={{ lineHeight: '1.6', fontSize: '0.80rem', backgroundColor: '#fcfcfc', padding: '1rem', borderLeft: '4px solid #000', borderRadius: '4px' }}>
+                    <p className="mb-2">¡Hola! 👋 Gracias por tu interés en nuestra <span className='has-text-weight-bold has-text-black'>reserva de kits corporativos</span> Nimbux 2026. </p>
+                  </div>
 
                   <div className="field mb-4">
                     <label className="label is-small has-text-black">¿Cuál es el presupuesto aproximado que tienes contemplado para tus regalos corporativos? *</label>
