@@ -100,6 +100,23 @@ export default function App() {
 
   const handleAssessmentSubmit = async (e) => {
     e.preventDefault();
+
+    // --- VALIDACIONES DE DATOS ---
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(assessmentData.correo)) {
+      alert("Por favor, introduce una dirección de correo electrónico válida.");
+      return;
+    }
+
+    // Valida que el WhatsApp contenga entre 10 y 15 números. Permite un '+' al inicio.
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    // Limpiamos los espacios en blanco por si el usuario los escribió
+    const cleanWhatsapp = assessmentData.whatsapp.replace(/\s+/g, '');
+    if (!phoneRegex.test(cleanWhatsapp)) {
+      alert("Por favor, introduce un número de WhatsApp válido (solo números, mínimo 10 dígitos).");
+      return;
+    }
+
     setIsSubmittingAssessment(true);
 
     const currentDate = new Date();
@@ -111,6 +128,7 @@ export default function App() {
     const finalData = {
       asesoriaId: customId, 
       ...assessmentData,
+      whatsapp: cleanWhatsapp, // Enviamos el número limpio a Netlify
       presupuesto: assessmentData.presupuesto === 'Otro' ? customAssessmentData.presupuesto : assessmentData.presupuesto,
       volumen: assessmentData.volumen === 'Otro' ? customAssessmentData.volumen : assessmentData.volumen,
       tiempo: assessmentData.tiempo === 'Otro' ? customAssessmentData.tiempo : assessmentData.tiempo,
@@ -475,7 +493,7 @@ export default function App() {
                       <div className="column is-6 field mb-3">
                         <label className="label is-small has-text-grey-dark">WhatsApp *</label>
                         <div className="control">
-                          <input className="input has-text-black" type="tel" name="whatsapp" required value={assessmentData.whatsapp} onChange={handleAssessmentChange} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                          <input className="input has-text-black" type="tel" name="whatsapp" required value={assessmentData.whatsapp} onChange={handleAssessmentChange}   onInput={(e) => {e.target.value = e.target.value.replace(/\D/g, '');}} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                         </div>
                       </div>
                     </div>

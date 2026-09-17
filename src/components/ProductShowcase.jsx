@@ -618,7 +618,7 @@ export default function ProductShowcase({ product, index }) {
                       <div className="column is-6 field">
                         <label className="label is-small has-text-grey-dark">WhatsApp *</label>
                         <div className="control">
-                          <input className="input has-text-black" type="tel" name="whatsapp" required value={formData.whatsapp} onChange={handleInputChange} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                          <input className="input has-text-black" type="tel" name="whatsapp" required value={formData.whatsapp} onChange={handleInputChange} onInput={(e) => {e.target.value = e.target.value.replace(/\D/g, '');}} placeholder="+52..." style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
                         </div>
                       </div>
                       <div className="column is-6 field">
