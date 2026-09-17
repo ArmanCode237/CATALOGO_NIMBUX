@@ -13,6 +13,9 @@ export default function App() {
   const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
   const [assessmentStep, setAssessmentStep] = useState(0);
   const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
+  
+  // NUEVO: Estado para bloquear el cierre del modal si vienen de la liga especial
+  const [isStrictAssessment, setIsStrictAssessment] = useState(false);
 
   // Estado con los valores del select
   const [assessmentData, setAssessmentData] = useState({
@@ -39,6 +42,7 @@ export default function App() {
   // Detección de enlace personalizado (www.tusitio.com/#asesoria)
   useEffect(() => {
     if (window.location.hash === '#asesoria' || window.location.search.includes('asesoria=true')) {
+      setIsStrictAssessment(true); // Activa el modo obligatorio
       setIsAssessmentOpen(true);
     }
   }, []);
@@ -53,12 +57,24 @@ export default function App() {
     setCustomAssessmentData({ ...customAssessmentData, [name]: value });
   };
 
+  // Función modificada para respetar el bloqueo
+  const handleCloseRequest = () => {
+    // Si es modo estricto y NO ha llegado al paso de éxito (paso 2), impedimos cerrar
+    if (isStrictAssessment && assessmentStep !== 2) {
+      return; 
+    }
+    resetAssessmentAndClose();
+  };
+
   const resetAssessmentAndClose = () => {
     setIsAssessmentOpen(false);
     if (window.location.hash === '#asesoria') {
       window.history.pushState('', document.title, window.location.pathname + window.location.search);
     }
     
+    // Una vez que cierran (después del éxito), liberamos el modo estricto para que puedan navegar normal
+    setIsStrictAssessment(false);
+
     setTimeout(() => {
       setAssessmentStep(0);
       setAssessmentData({
@@ -86,17 +102,14 @@ export default function App() {
     e.preventDefault();
     setIsSubmittingAssessment(true);
 
-    // --- GENERACIÓN DEL ID PERSONALIZADO ---
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString('es-MX');
     const formattedTime = currentDate.toLocaleTimeString('es-MX');
-    // Si no escribieron empresa por alguna razón, usamos un valor por defecto
     const nombreEmpresa = assessmentData.empresa.trim() || 'Empresa_No_Especificada';
     const customId = `${nombreEmpresa} - ${formattedDate} - ${formattedTime}`;
 
-    // Evaluamos si debemos enviar la opción del select o el texto escrito en "Otro"
     const finalData = {
-      asesoriaId: customId, // Inyectamos nuestro ID personalizado
+      asesoriaId: customId, 
       ...assessmentData,
       presupuesto: assessmentData.presupuesto === 'Otro' ? customAssessmentData.presupuesto : assessmentData.presupuesto,
       volumen: assessmentData.volumen === 'Otro' ? customAssessmentData.volumen : assessmentData.volumen,
@@ -231,8 +244,12 @@ export default function App() {
                 className="mt-6"
               >
                 <div className="mb-6">
+                  {/* Botón manual para abrir el modal (no aplica el bloqueo estricto) */}
                   <button 
-                    onClick={() => setIsAssessmentOpen(true)}
+                    onClick={() => {
+                      setIsStrictAssessment(false); // Reseteamos por si acaso
+                      setIsAssessmentOpen(true);
+                    }}
                     className="button is-black is-outlined is-medium" 
                     style={{ 
                       borderRadius: '0', 
@@ -296,8 +313,9 @@ export default function App() {
               className="custom-modal-box"
               style={{ width: '90%', maxWidth: '50%' }}
             >
-              {assessmentStep !== 2 && (
-                <button onClick={resetAssessmentAndClose} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
+              {/* LÓGICA DEL BOTÓN DE CIERRE: Se oculta si es modo estricto y no ha terminado */}
+              {(!isStrictAssessment || assessmentStep === 2) && (
+                <button onClick={handleCloseRequest} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#999', transition: 'color 0.2s ease', zIndex: 10 }} onMouseOver={(e) => e.target.style.color = '#000'} onMouseOut={(e) => e.target.style.color = '#999'}>✕</button>
               )}
 
               {/* PASO 0: CUESTIONARIO ESTRATÉGICO CON PREGUNTAS EXACTAS E INPUTS "OTRO" */}
@@ -485,8 +503,9 @@ export default function App() {
                     Hemos recibido la información de tu proyecto exitosamente. Un especialista de nuestro equipo se pondrá en contacto contigo muy pronto.
                   </p>
                   
+                  {/* Este botón ahora llama a resetAssessmentAndClose que también limpia el hash */}
                   <button onClick={resetAssessmentAndClose} className="button is-black is-fullwidth mt-6" style={{ borderRadius: '0', padding: '1.2rem' }}>
-                    VOLVER AL CATÁLOGO
+                    EXPLORAR EL CATÁLOGO
                   </button>
                 </motion.div>
               )}
