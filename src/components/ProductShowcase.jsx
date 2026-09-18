@@ -51,6 +51,7 @@ export default function ProductShowcase({ product, index }) {
     tipoGrabado: 'Logotipo', 
     tipografia: '',
     colorTarjeta: '',
+    nombre:'',
     empresa: '',
     correo: '',
     whatsapp: '',
@@ -65,6 +66,7 @@ export default function ProductShowcase({ product, index }) {
         tipoGrabado: 'Logotipo',
         tipografia: 'Sin tipografía', 
         colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
+        nombre: '',
         empresa: '',
         correo: '',
         whatsapp: '',
@@ -133,6 +135,7 @@ export default function ProductShowcase({ product, index }) {
         tipoGrabado: 'Logotipo',
         tipografia: 'Sin tipografía',
         colorTarjeta: product.card?.availabilityColors?.[0]?.color || '',
+        nombre: '',
         empresa: '',
         correo: '',
         whatsapp: '',
@@ -599,6 +602,16 @@ export default function ProductShowcase({ product, index }) {
                   <p className="is-size-7 has-text-grey uppercase mb-5" style={{ letterSpacing: '1px' }}>PASO 3 DE 3 - COMPLETA TU INFORMACIÓN</p>
                   
                   <form onSubmit={handleSubmitOrder}>
+
+                    {/* --- INICIO DE NUEVO CAMPO --- */}
+                    <div className="field mb-4">
+                      <label className="label is-small has-text-grey-dark">Tu Nombre *</label>
+                      <div className="control">
+                        <input className="input has-text-black" type="text" name="nombre" required value={formData.nombre} onChange={handleInputChange} placeholder="Ej. Juan Pérez" style={{ borderRadius: '6px', border: '1px solid #ddd', backgroundColor: '#fcfcfc' }} />
+                      </div>
+                    </div>
+                    {/* --- FIN DE NUEVO CAMPO --- */}
+                    
                     <div className="field mb-4">
                       <label className="label is-small has-text-grey-dark">Nombre de la Empresa *</label>
                       <div className="control">
