@@ -11,10 +11,10 @@ export default function SnowEffect() {
     const generatedFlakes = Array.from({ length: SNOWFLAKE_COUNT }).map((_, i) => ({
       id: i,
       x: Math.random() * 100, // Posición horizontal en porcentaje
-      size: Math.random() * 6 + 4, // Tamaño entre 4px y 10px
+      size: Math.random() * 14 + 10, // Aumentado ligeramente (8px a 20px) porque el texto se ve más pequeño
       duration: Math.random() * 12 + 8, // Velocidad de caída entre 8s y 20s
       delay: Math.random() * 5, // Retraso aleatorio al iniciar
-      opacity: Math.random() * 0.4 + 0.15, // Opacidad sutil
+      opacity: Math.random() * 0.5 + 0.15, // Opacidad sutil
       drift: (Math.random() - 0.5) * 40, // Ligero movimiento lateral
     }));
     setFlakes(generatedFlakes);
@@ -40,23 +40,26 @@ export default function SnowEffect() {
           animate={{ 
             y: ['0vh', '105vh'], 
             x: [`${flake.x}vw`, `${flake.x + flake.drift}vw`],
-            opacity: [0, flake.opacity, flake.opacity, 0]
+            opacity: [0, flake.opacity, flake.opacity, 0],
+            rotate: [0, 180, 360] // Añade un efecto de rotación mientras caen
           }}
           transition={{
             duration: flake.duration,
             repeat: Infinity,
             delay: flake.delay,
-            ease: "easeInOut"
+            ease: "linear" // 'linear' hace que la rotación se vea más natural
           }}
           style={{
             position: 'absolute',
-            width: `${flake.size}px`,
-            height: `${flake.size}px`,
-            backgroundColor: '#29baef',
-            borderRadius: '50%',
-            boxShadow: '0 0 8px rgba(255, 255, 255, 0.6)',
+            fontSize: `${flake.size}px`, // Usamos fontSize en lugar de width/height
+            color: '#29baef', // Aplicamos tu color azul al texto
+            textShadow: '0 0 8px rgba(255, 255, 255, 0.6)', // textShadow en lugar de boxShadow
+            userSelect: 'none', // Evita que el usuario seleccione los copos por error
+            lineHeight: 1
           }}
-        />
+        >
+          ❄
+        </motion.div>
       ))}
     </div>
   );

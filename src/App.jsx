@@ -344,7 +344,7 @@ export default function App() {
 
                   {/* MENSAJE DE BIENVENIDA ADAPTADO */}
                   <div className="mb-5 has-text-grey-dark" style={{ lineHeight: '1.6', fontSize: '0.80rem', backgroundColor: '#fcfcfc', padding: '1rem', borderLeft: '4px solid #000', borderRadius: '4px' }}>
-                    <p className="mb-2">¡Hola! 👋 Gracias por tu interés en nuestra <span className='has-text-weight-bold has-text-black'>Reserva de Kits Corporativos</span> Nimbux 2026. </p>
+                    <p className="mb-2">¡Hola! 👋 Gracias por tu interés en nuestra <span className='has-text-weight-bold has-text-black'>Reserva Corporativa</span> Nimbux 2026. </p>
                   </div>
 
                   <div className="field mb-4">
@@ -397,8 +397,8 @@ export default function App() {
                       <div className="select is-fullwidth">
                         <select className="has-text-black" name="tiempo" value={assessmentData.tiempo} onChange={handleAssessmentChange} style={{ borderRadius: '6px', backgroundColor: '#fcfcfc' }}>
                           <option value="Noviembre">Noviembre</option>
-                          <option value="Primera quincena de diciembre">Primera quincena de diciembre</option>
-                          <option value="Segunda quincena de diciembre">Segunda quincena de diciembre</option>
+                          <option value="Primera quincena de diciembre">1er semana de Diciembre</option>
+                          <option value="Segunda quincena de diciembre">2da semana de Diciembre</option>
                           <option value="Aún estoy definiendo la fecha">Aún estoy definiendo la fecha</option>
                           <option value="Otro">Otro</option>
                         </select>
